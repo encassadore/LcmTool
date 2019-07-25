@@ -1,0 +1,600 @@
+﻿@model LcmTool.Models.ExecutionList_new
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ExecutionList_new</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WO_StatusID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WO_StatusID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.currentServerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.currentServerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cmo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cmo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.newServerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.newServerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fmo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fmo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status27Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status27Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.waveNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.waveNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.handoverDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.handoverDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.siteComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.siteComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.appName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.appName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.appOwner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.appOwner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monsantoPM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monsantoPM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.atosPM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.atosPM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.escalationNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.escalationNotes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personContacted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personContacted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contactedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contactedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.serialNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serialNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pmNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pmNotes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.skyfall)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.skyfall)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.skyfallNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.skyfallNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.skyfall_index)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.skyfall_index)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.decomStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.decomStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.retirementCrq)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.retirementCrq)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.retirementChg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.retirementChg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.retirementWo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.retirementWo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.j_data_decom_only)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.j_data_decom_only)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.forecastedStatusDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.forecastedStatusDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cabApprovalDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cabApprovalDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.java)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.java)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.middleware)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.middleware)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.citrix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.citrix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lcmWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lcmWeek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.platforms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.platforms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.complianceAssetID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.complianceAssetID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.screamTeast)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.screamTeast)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppTeamTurnoverDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppTeamTurnoverDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.managedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.managedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.currentOsVersion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.currentOsVersion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.futureOsVersion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.futureOsVersion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateEnteredCorral)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateEnteredCorral)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.followupMonth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.followupMonth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.transformation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.transformation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.afqOsVersion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.afqOsVersion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fiscalYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fiscalYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NZEV_Overlap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NZEV_Overlap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.serverRequiresOsLicense)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serverRequiresOsLicense)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumCores)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumCores)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumProcessors)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumProcessors)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NZEV_Remediation_Planned)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NZEV_Remediation_Planned)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISO_Exception_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISO_Exception_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COG_Supported)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COG_Supported)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorralPlannedDisposition.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorralPlannedDisposition.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryRegion.region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryRegion.region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatabaseType.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatabaseType.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DecomType.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DecomType.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.Department1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.Department1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Environment.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Environment.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grouping.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grouping.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OperatingSystem.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperatingSystem.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resource.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resource.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServerInCorral.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServerInCorral.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Site.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Site.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusType.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusType.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SupportGroupCmdb.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SupportGroupCmdb.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkOrder.workOrderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkOrder.workOrderID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

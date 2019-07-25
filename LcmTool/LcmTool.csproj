@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -147,9 +155,166 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ExecutionListsController.cs" />
+    <Compile Include="Controllers\ExecutionList_newController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StatusesTypesController.cs" />
+    <Compile Include="Controllers\StatusTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssignedResource.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AtosTeam.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\captured_columns.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\change_tables.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CmoFmoType.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CorralPlannedDisposition.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CountryRegion.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CRQ_CHG_WO_StatusType.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DatabaseType.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbo_ExecutionList_CT.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbo_ExecutionList_new_CT.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ddl_history.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DecomType.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Environment.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EventLog.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EventLog1.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExecutionList.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExecutionList_new.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FollowupMonth.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GoalsTarget.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Grouping.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GroupingsType.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InCorralType.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\index_columns.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LifecycleManagementModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LifecycleManagementModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LifecycleManagementModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LifecycleManagementModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LifecycleManagementModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\lsn_time_mapping.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OperatingSystem.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OperatingSystemVersion.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlannedDispositionType.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Platform.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlatformsType.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resource.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ScreamTestType.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServerInCorral.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServersInCorralType.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Site.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatusesType.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatusHistory.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatusHistoryArchive.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatusType.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SupportGroupCmdb.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\systranschema.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrder.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrderReason.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrderStatu.cs">
+      <DependentUpon>LifecycleManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -162,10 +327,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\LifecycleManagementModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>LifecycleManagementModel.Context.cs</LastGenOutput>
+      <DependentUpon>LifecycleManagementModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\LifecycleManagementModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LifecycleManagementModel.edmx</DependentUpon>
+      <LastGenOutput>LifecycleManagementModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\LifecycleManagementModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LifecycleManagementModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\LifecycleManagementModel.edmx.diagram">
+      <DependentUpon>LifecycleManagementModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -192,10 +374,29 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\ExecutionLists\Create.cshtml" />
+    <Content Include="Views\ExecutionLists\Delete.cshtml" />
+    <Content Include="Views\ExecutionLists\Details.cshtml" />
+    <Content Include="Views\ExecutionLists\Edit.cshtml" />
+    <Content Include="Views\ExecutionLists\Index.cshtml" />
+    <Content Include="Views\StatusesTypes\Create.cshtml" />
+    <Content Include="Views\StatusesTypes\Delete.cshtml" />
+    <Content Include="Views\StatusesTypes\Details.cshtml" />
+    <Content Include="Views\StatusesTypes\Edit.cshtml" />
+    <Content Include="Views\StatusesTypes\Index.cshtml" />
+    <Content Include="Views\ExecutionList_new\Create.cshtml" />
+    <Content Include="Views\ExecutionList_new\Delete.cshtml" />
+    <Content Include="Views\ExecutionList_new\Details.cshtml" />
+    <Content Include="Views\ExecutionList_new\Edit.cshtml" />
+    <Content Include="Views\ExecutionList_new\Index.cshtml" />
+    <Content Include="Views\StatusTypes\Create.cshtml" />
+    <Content Include="Views\StatusTypes\Delete.cshtml" />
+    <Content Include="Views\StatusTypes\Details.cshtml" />
+    <Content Include="Views\StatusTypes\Edit.cshtml" />
+    <Content Include="Views\StatusTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -209,6 +410,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

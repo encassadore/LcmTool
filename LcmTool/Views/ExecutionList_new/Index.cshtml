@@ -1,0 +1,459 @@
+﻿@model IEnumerable<LcmTool.Models.ExecutionList_new>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WO_StatusID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.currentServerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cmo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.newServerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fmo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status27Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.waveNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.handoverDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.region)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.siteComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.appName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.appOwner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monsantoPM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.atosPM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.escalationNotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.personContacted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contactedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serialNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pmNotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.skyfall)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.skyfallNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.skyfall_index)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.decomStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.retirementCrq)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.retirementChg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.retirementWo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.j_data_decom_only)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.forecastedStatusDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cabApprovalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.java)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.middleware)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.citrix)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lcmWeek)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.platforms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.complianceAssetID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.screamTeast)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppTeamTurnoverDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.managedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.currentOsVersion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.futureOsVersion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateEnteredCorral)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.followupMonth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.transformation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.afqOsVersion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fiscalYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NZEV_Overlap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serverRequiresOsLicense)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumCores)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumProcessors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NZEV_Remediation_Planned)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISO_Exception_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COG_Supported)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CorralPlannedDisposition.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryRegion.region)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatabaseType.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DecomType.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department.Department1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Environment.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grouping.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OperatingSystem.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Resource.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServerInCorral.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Site.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusType.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SupportGroupCmdb.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkOrder.workOrderID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.WO_StatusID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.currentServerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cmo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.newServerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fmo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status27Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.waveNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.handoverDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.region)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.siteComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.appName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.appOwner)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monsantoPM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.atosPM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.escalationNotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.personContacted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contactedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serialNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pmNotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.skyfall)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.skyfallNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.skyfall_index)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.decomStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.retirementCrq)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.retirementChg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.retirementWo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.j_data_decom_only)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.forecastedStatusDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cabApprovalDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.java)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.middleware)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.citrix)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lcmWeek)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.platforms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.complianceAssetID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.screamTeast)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppTeamTurnoverDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.managedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.currentOsVersion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.futureOsVersion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateEnteredCorral)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.followupMonth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.transformation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.afqOsVersion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fiscalYear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NZEV_Overlap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serverRequiresOsLicense)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumCores)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumProcessors)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NZEV_Remediation_Planned)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISO_Exception_Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COG_Supported)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CorralPlannedDisposition.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CountryRegion.region)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatabaseType.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DecomType.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.Department1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Environment.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grouping.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperatingSystem.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Resource.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServerInCorral.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Site.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusType.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SupportGroupCmdb.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkOrder.workOrderID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.lcmID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.lcmID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.lcmID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,3031 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LifecycleManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="captured_columns">
+          <Key>
+            <PropertyRef Name="object_id" />
+            <PropertyRef Name="column_ordinal" />
+          </Key>
+          <Property Name="object_id" Type="int" Nullable="false" />
+          <Property Name="column_name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="column_id" Type="int" />
+          <Property Name="column_type" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="column_ordinal" Type="int" Nullable="false" />
+          <Property Name="is_computed" Type="bit" />
+          <Property Name="masking_function" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="change_tables">
+          <Key>
+            <PropertyRef Name="object_id" />
+          </Key>
+          <Property Name="object_id" Type="int" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="source_object_id" Type="int" />
+          <Property Name="capture_instance" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="start_lsn" Type="binary" MaxLength="10" />
+          <Property Name="end_lsn" Type="binary" MaxLength="10" />
+          <Property Name="supports_net_changes" Type="bit" />
+          <Property Name="has_drop_pending" Type="bit" />
+          <Property Name="role_name" Type="nvarchar" MaxLength="128" />
+          <Property Name="index_name" Type="nvarchar" MaxLength="128" />
+          <Property Name="filegroup_name" Type="nvarchar" MaxLength="128" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="partition_switch" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LifecycleManagement.cdc.dbo_ExecutionList_CT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="dbo_ExecutionList_CT">
+          <Key>
+            <PropertyRef Name="__$start_lsn" />
+            <PropertyRef Name="__$seqval" />
+            <PropertyRef Name="__$operation" />
+          </Key>
+          <Property Name="__$start_lsn" Type="binary" MaxLength="10" Nullable="false" />
+          <Property Name="__$end_lsn" Type="binary" MaxLength="10" />
+          <Property Name="__$seqval" Type="binary" MaxLength="10" Nullable="false" />
+          <Property Name="__$operation" Type="int" Nullable="false" />
+          <Property Name="__$update_mask" Type="varbinary" MaxLength="128" />
+          <Property Name="lcmID" Type="int" />
+          <Property Name="currentServerName" Type="varchar" MaxLength="64" />
+          <Property Name="cmo" Type="varchar" MaxLength="255" />
+          <Property Name="newServerName" Type="varchar" MaxLength="64" />
+          <Property Name="fmo" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="status27Date" Type="date" />
+          <Property Name="notes" Type="text" />
+          <Property Name="waveNum" Type="varchar" MaxLength="32" />
+          <Property Name="grouping" Type="varchar" MaxLength="255" />
+          <Property Name="CRQ_CHG_WO" Type="varchar" MaxLength="255" />
+          <Property Name="CRQ_CHG_WOStatus" Type="varchar" MaxLength="255" />
+          <Property Name="HandoverDate" Type="date" />
+          <Property Name="region" Type="varchar" MaxLength="255" />
+          <Property Name="country" Type="varchar" MaxLength="64" />
+          <Property Name="site" Type="varchar" MaxLength="64" />
+          <Property Name="siteComments" Type="text" />
+          <Property Name="appName" Type="text" />
+          <Property Name="appOwner" Type="text" />
+          <Property Name="monsantoPM" Type="varchar" MaxLength="64" />
+          <Property Name="atosPM" Type="varchar" MaxLength="64" />
+          <Property Name="escalationNotes" Type="text" />
+          <Property Name="personContacted" Type="varchar" MaxLength="64" />
+          <Property Name="contactedDate" Type="date" />
+          <Property Name="serialNum" Type="varchar" MaxLength="255" />
+          <Property Name="pmNotes" Type="text" />
+          <Property Name="environment" Type="varchar" MaxLength="32" />
+          <Property Name="supportGroupCmdb" Type="varchar" MaxLength="255" />
+          <Property Name="operatingSystem" Type="varchar" MaxLength="64" />
+          <Property Name="skyfall" Type="varchar" MaxLength="255" />
+          <Property Name="skyfallNum" Type="int" />
+          <Property Name="skyfallIndex" Type="decimal" Precision="8" Scale="6" />
+          <Property Name="atosTeamID" Type="varchar" MaxLength="32" />
+          <Property Name="decomType" Type="varchar" MaxLength="255" />
+          <Property Name="decomStartDate" Type="date" />
+          <Property Name="retirementCrq" Type="varchar" MaxLength="255" />
+          <Property Name="retirementChg" Type="varchar" MaxLength="255" />
+          <Property Name="retirementWo" Type="varchar" MaxLength="255" />
+          <Property Name="decomData" Type="varchar" MaxLength="8" />
+          <Property Name="forecastedStatusDate" Type="date" />
+          <Property Name="cabApprovalDate" Type="date" />
+          <Property Name="database" Type="varchar" MaxLength="255" />
+          <Property Name="java" Type="varchar" MaxLength="255" />
+          <Property Name="middleware" Type="varchar" MaxLength="255" />
+          <Property Name="citrix" Type="varchar" MaxLength="8" />
+          <Property Name="lcmWeek" Type="int" />
+          <Property Name="platforms" Type="varchar" MaxLength="255" />
+          <Property Name="complianceAssetID" Type="varchar" MaxLength="255" />
+          <Property Name="screamTest" Type="varchar" MaxLength="255" />
+          <Property Name="serverInCorral" Type="varchar" MaxLength="8" />
+          <Property Name="corralPlannedDisposition" Type="varchar" MaxLength="255" />
+          <Property Name="AppTeamTurnoverDate" Type="date" />
+          <Property Name="managedBy" Type="varchar" MaxLength="32" />
+          <Property Name="currentOsVersion" Type="varchar" MaxLength="255" />
+          <Property Name="futureOsVersion" Type="varchar" MaxLength="255" />
+          <Property Name="dateEnteredCorral" Type="date" />
+          <Property Name="followupMonth" Type="varchar" MaxLength="32" />
+          <Property Name="transformation" Type="varchar" MaxLength="8" />
+          <Property Name="afqOsVersion" Type="varchar" MaxLength="255" />
+          <Property Name="fiscalYear" Type="int" />
+          <Property Name="ResourceID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="text" />
+          <Property Name="ModifiedBy" Type="text" />
+          <Property Name="__$command_id" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LifecycleManagement.cdc.dbo_ExecutionList_new_CT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="dbo_ExecutionList_new_CT">
+          <Key>
+            <PropertyRef Name="__$start_lsn" />
+            <PropertyRef Name="__$seqval" />
+            <PropertyRef Name="__$operation" />
+          </Key>
+          <Property Name="__$start_lsn" Type="binary" MaxLength="10" Nullable="false" />
+          <Property Name="__$end_lsn" Type="binary" MaxLength="10" />
+          <Property Name="__$seqval" Type="binary" MaxLength="10" Nullable="false" />
+          <Property Name="__$operation" Type="int" Nullable="false" />
+          <Property Name="__$update_mask" Type="varbinary" MaxLength="128" />
+          <Property Name="lcmID" Type="int" />
+          <Property Name="resourceID" Type="int" />
+          <Property Name="statusID" Type="int" />
+          <Property Name="groupingID" Type="int" />
+          <Property Name="workOrderID" Type="int" />
+          <Property Name="WO_StatusID" Type="nchar" MaxLength="10" />
+          <Property Name="currentServerName" Type="varchar" MaxLength="64" />
+          <Property Name="cmo" Type="int" />
+          <Property Name="newServerName" Type="varchar" MaxLength="64" />
+          <Property Name="fmo" Type="int" />
+          <Property Name="status27Date" Type="date" />
+          <Property Name="notes" Type="text" />
+          <Property Name="waveNum" Type="varchar" MaxLength="32" />
+          <Property Name="handoverDate" Type="date" />
+          <Property Name="region" Type="varchar" MaxLength="10" />
+          <Property Name="country" Type="varchar" MaxLength="50" />
+          <Property Name="siteID" Type="int" />
+          <Property Name="siteComments" Type="text" />
+          <Property Name="appName" Type="varchar" MaxLength="255" />
+          <Property Name="appOwner" Type="varchar" MaxLength="255" />
+          <Property Name="monsantoPM" Type="varchar" MaxLength="255" />
+          <Property Name="atosPM" Type="varchar" MaxLength="255" />
+          <Property Name="escalationNotes" Type="text" />
+          <Property Name="personContacted" Type="varchar" MaxLength="255" />
+          <Property Name="contactedDate" Type="datetime" />
+          <Property Name="serialNum" Type="varchar" MaxLength="255" />
+          <Property Name="pmNotes" Type="text" />
+          <Property Name="environmentID" Type="int" />
+          <Property Name="supportGroupID" Type="int" />
+          <Property Name="operatingSystemID" Type="int" />
+          <Property Name="skyfall" Type="varchar" MaxLength="255" />
+          <Property Name="skyfallNum" Type="int" />
+          <Property Name="skyfall_index" Type="decimal" Precision="8" Scale="6" />
+          <Property Name="AtosTeamID" Type="int" />
+          <Property Name="decomTypeID" Type="int" />
+          <Property Name="decomStartDate" Type="datetime" />
+          <Property Name="retirementCrq" Type="varchar" MaxLength="255" />
+          <Property Name="retirementChg" Type="varchar" MaxLength="255" />
+          <Property Name="retirementWo" Type="varchar" MaxLength="255" />
+          <Property Name="j_data_decom_only" Type="bit" />
+          <Property Name="forecastedStatusDate" Type="datetime" />
+          <Property Name="cabApprovalDate" Type="datetime" />
+          <Property Name="databaseTypeID" Type="int" />
+          <Property Name="java" Type="varchar" MaxLength="255" />
+          <Property Name="middleware" Type="varchar" MaxLength="255" />
+          <Property Name="citrix" Type="varchar" MaxLength="255" />
+          <Property Name="lcmWeek" Type="int" />
+          <Property Name="platforms" Type="varchar" MaxLength="255" />
+          <Property Name="complianceAssetID" Type="varchar" MaxLength="255" />
+          <Property Name="screamTeast" Type="varchar" MaxLength="255" />
+          <Property Name="serverInCorral_ID" Type="int" />
+          <Property Name="plannedDispositionID" Type="int" />
+          <Property Name="AppTeamTurnoverDate" Type="datetime" />
+          <Property Name="managedBy" Type="varchar" MaxLength="255" />
+          <Property Name="currentOsVersion" Type="int" />
+          <Property Name="futureOsVersion" Type="int" />
+          <Property Name="dateEnteredCorral" Type="datetime" />
+          <Property Name="followupMonth" Type="varchar" MaxLength="50" />
+          <Property Name="transformation" Type="varchar" MaxLength="50" />
+          <Property Name="afqOsVersion" Type="varchar" MaxLength="255" />
+          <Property Name="fiscalYear" Type="int" />
+          <Property Name="NZEV_Overlap" Type="bit" />
+          <Property Name="serverRequiresOsLicense" Type="varchar" MaxLength="255" />
+          <Property Name="NumCores" Type="int" />
+          <Property Name="NumProcessors" Type="int" />
+          <Property Name="NZEV_Remediation_Planned" Type="varchar" MaxLength="255" />
+          <Property Name="ISO_Exception_Number" Type="varchar" MaxLength="255" />
+          <Property Name="COG_Supported" Type="bit" />
+          <Property Name="countryRegionID" Type="int" />
+          <Property Name="__$command_id" Type="int" />
+        </EntityType>
+        <EntityType Name="ddl_history">
+          <Key>
+            <PropertyRef Name="object_id" />
+            <PropertyRef Name="ddl_lsn" />
+          </Key>
+          <Property Name="source_object_id" Type="int" />
+          <Property Name="object_id" Type="int" Nullable="false" />
+          <Property Name="required_column_update" Type="bit" />
+          <Property Name="ddl_command" Type="nvarchar(max)" />
+          <Property Name="ddl_lsn" Type="binary" MaxLength="10" Nullable="false" />
+          <Property Name="ddl_time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="index_columns">
+          <Key>
+            <PropertyRef Name="object_id" />
+            <PropertyRef Name="index_ordinal" />
+            <PropertyRef Name="column_id" />
+          </Key>
+          <Property Name="object_id" Type="int" Nullable="false" />
+          <Property Name="column_name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="index_ordinal" Type="tinyint" Nullable="false" />
+          <Property Name="column_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lsn_time_mapping">
+          <Key>
+            <PropertyRef Name="start_lsn" />
+          </Key>
+          <Property Name="start_lsn" Type="binary" MaxLength="10" Nullable="false" />
+          <Property Name="tran_begin_time" Type="datetime" />
+          <Property Name="tran_end_time" Type="datetime" />
+          <Property Name="tran_id" Type="varbinary" MaxLength="10" />
+          <Property Name="tran_begin_lsn" Type="binary" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="AssignedResource">
+          <Key>
+            <PropertyRef Name="AssignedResourceID" />
+          </Key>
+          <Property Name="AssignedResourceID" Type="int" Nullable="false" />
+          <Property Name="AssignedResourceName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AtosTeam">
+          <Key>
+            <PropertyRef Name="AtosTeamID" />
+          </Key>
+          <Property Name="AtosTeamID" Type="int" Nullable="false" />
+          <Property Name="AtosTeamName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CmoFmoType">
+          <Key>
+            <PropertyRef Name="CmoFmoID" />
+          </Key>
+          <Property Name="CmoFmoID" Type="int" Nullable="false" />
+          <Property Name="CmoFmoName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CorralPlannedDisposition">
+          <Key>
+            <PropertyRef Name="plannedDispositionID" />
+          </Key>
+          <Property Name="plannedDispositionID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CountryRegion">
+          <Key>
+            <PropertyRef Name="countryRegionID" />
+          </Key>
+          <Property Name="countryRegionID" Type="int" Nullable="false" />
+          <Property Name="region" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="country" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CRQ_CHG_WO_StatusType">
+          <Key>
+            <PropertyRef Name="CRQ_CHG_WO_TypeID" />
+          </Key>
+          <Property Name="CRQ_CHG_WO_TypeID" Type="int" Nullable="false" />
+          <Property Name="CRQ_CHG_WO_TypeName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DatabaseType">
+          <Key>
+            <PropertyRef Name="databaseTypeID" />
+          </Key>
+          <Property Name="databaseTypeID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DecomType">
+          <Key>
+            <PropertyRef Name="decomTypeID" />
+          </Key>
+          <Property Name="decomTypeID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="AtosTeamID" />
+          </Key>
+          <Property Name="AtosTeamID" Type="int" Nullable="false" />
+          <Property Name="Department" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Environment">
+          <Key>
+            <PropertyRef Name="environmentID" />
+          </Key>
+          <Property Name="environmentID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventLog">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServerID" Type="int" Nullable="false" />
+          <Property Name="EventType" Type="varchar" MaxLength="50" />
+          <Property Name="LifecycleStatusID" Type="int" />
+          <Property Name="Timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="InitiatedBy" Type="varchar" MaxLength="250" />
+          <Property Name="DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EventLogs">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServerID" Type="int" Nullable="false" />
+          <Property Name="EventType" Type="varchar" MaxLength="50" />
+          <Property Name="LifecycleStatusID" Type="int" />
+          <Property Name="TimeStamped" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="InitiatedBy" Type="varchar" MaxLength="250" />
+          <Property Name="Date_Time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ExecutionList">
+          <Key>
+            <PropertyRef Name="lcmID" />
+          </Key>
+          <Property Name="lcmID" Type="int" Nullable="false" />
+          <Property Name="currentServerName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="cmo" Type="varchar" MaxLength="255" />
+          <Property Name="newServerName" Type="varchar" MaxLength="64" />
+          <Property Name="fmo" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="status27Date" Type="date" />
+          <Property Name="notes" Type="text" />
+          <Property Name="waveNum" Type="varchar" MaxLength="32" />
+          <Property Name="grouping" Type="varchar" MaxLength="255" />
+          <Property Name="CRQ_CHG_WO" Type="varchar" MaxLength="255" />
+          <Property Name="CRQ_CHG_WOStatus" Type="varchar" MaxLength="255" />
+          <Property Name="HandoverDate" Type="date" />
+          <Property Name="region" Type="varchar" MaxLength="255" />
+          <Property Name="country" Type="varchar" MaxLength="64" />
+          <Property Name="site" Type="varchar" MaxLength="64" />
+          <Property Name="siteComments" Type="text" />
+          <Property Name="appName" Type="text" />
+          <Property Name="appOwner" Type="text" />
+          <Property Name="monsantoPM" Type="varchar" MaxLength="64" />
+          <Property Name="atosPM" Type="varchar" MaxLength="64" />
+          <Property Name="escalationNotes" Type="text" />
+          <Property Name="personContacted" Type="varchar" MaxLength="64" />
+          <Property Name="contactedDate" Type="date" />
+          <Property Name="serialNum" Type="varchar" MaxLength="255" />
+          <Property Name="pmNotes" Type="text" />
+          <Property Name="environment" Type="varchar" MaxLength="32" />
+          <Property Name="supportGroupCmdb" Type="varchar" MaxLength="255" />
+          <Property Name="operatingSystem" Type="varchar" MaxLength="64" />
+          <Property Name="skyfall" Type="varchar" MaxLength="255" />
+          <Property Name="skyfallNum" Type="int" />
+          <Property Name="skyfallIndex" Type="decimal" Precision="8" Scale="6" />
+          <Property Name="atosTeamID" Type="varchar" MaxLength="32" />
+          <Property Name="decomType" Type="varchar" MaxLength="255" />
+          <Property Name="decomStartDate" Type="date" />
+          <Property Name="retirementCrq" Type="varchar" MaxLength="255" />
+          <Property Name="retirementChg" Type="varchar" MaxLength="255" />
+          <Property Name="retirementWo" Type="varchar" MaxLength="255" />
+          <Property Name="decomData" Type="varchar" MaxLength="8" />
+          <Property Name="forecastedStatusDate" Type="date" />
+          <Property Name="cabApprovalDate" Type="date" />
+          <Property Name="database" Type="varchar" MaxLength="255" />
+          <Property Name="java" Type="varchar" MaxLength="255" />
+          <Property Name="middleware" Type="varchar" MaxLength="255" />
+          <Property Name="citrix" Type="varchar" MaxLength="8" />
+          <Property Name="lcmWeek" Type="int" />
+          <Property Name="platforms" Type="varchar" MaxLength="255" />
+          <Property Name="complianceAssetID" Type="varchar" MaxLength="255" />
+          <Property Name="screamTest" Type="varchar" MaxLength="255" />
+          <Property Name="serverInCorral" Type="varchar" MaxLength="8" />
+          <Property Name="corralPlannedDisposition" Type="varchar" MaxLength="255" />
+          <Property Name="AppTeamTurnoverDate" Type="date" />
+          <Property Name="managedBy" Type="varchar" MaxLength="32" />
+          <Property Name="currentOsVersion" Type="varchar" MaxLength="255" />
+          <Property Name="futureOsVersion" Type="varchar" MaxLength="255" />
+          <Property Name="dateEnteredCorral" Type="date" />
+          <Property Name="followupMonth" Type="varchar" MaxLength="32" />
+          <Property Name="transformation" Type="varchar" MaxLength="8" />
+          <Property Name="afqOsVersion" Type="varchar" MaxLength="255" />
+          <Property Name="fiscalYear" Type="int" />
+          <Property Name="ResourceID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="text" />
+          <Property Name="ModifiedBy" Type="text" />
+          <Property Name="NZEVOverlap" Type="varchar" MaxLength="255" />
+          <Property Name="ServerRequiresOSLicense" Type="varchar" MaxLength="255" />
+          <Property Name="NumCores" Type="decimal" Precision="8" Scale="6" />
+          <Property Name="NumProcessors" Type="decimal" Precision="8" Scale="6" />
+          <Property Name="NZEVRemediationPlanned" Type="varchar" MaxLength="255" />
+          <Property Name="ISOExceptionNumber" Type="varchar" MaxLength="255" />
+          <Property Name="COGSupported" Type="varchar" MaxLength="255" />
+          <Property Name="LcmType" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ExecutionList_new">
+          <Key>
+            <PropertyRef Name="lcmID" />
+          </Key>
+          <Property Name="lcmID" Type="int" Nullable="false" />
+          <Property Name="resourceID" Type="int" />
+          <Property Name="statusID" Type="int" />
+          <Property Name="groupingID" Type="int" />
+          <Property Name="workOrderID" Type="int" />
+          <Property Name="WO_StatusID" Type="nchar" MaxLength="10" />
+          <Property Name="currentServerName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="cmo" Type="int" />
+          <Property Name="newServerName" Type="varchar" MaxLength="64" />
+          <Property Name="fmo" Type="int" />
+          <Property Name="status27Date" Type="date" />
+          <Property Name="notes" Type="text" />
+          <Property Name="waveNum" Type="varchar" MaxLength="32" />
+          <Property Name="handoverDate" Type="date" />
+          <Property Name="region" Type="varchar" MaxLength="10" />
+          <Property Name="country" Type="varchar" MaxLength="50" />
+          <Property Name="siteID" Type="int" />
+          <Property Name="siteComments" Type="text" />
+          <Property Name="appName" Type="varchar" MaxLength="255" />
+          <Property Name="appOwner" Type="varchar" MaxLength="255" />
+          <Property Name="monsantoPM" Type="varchar" MaxLength="255" />
+          <Property Name="atosPM" Type="varchar" MaxLength="255" />
+          <Property Name="escalationNotes" Type="text" />
+          <Property Name="personContacted" Type="varchar" MaxLength="255" />
+          <Property Name="contactedDate" Type="datetime" />
+          <Property Name="serialNum" Type="varchar" MaxLength="255" />
+          <Property Name="pmNotes" Type="text" />
+          <Property Name="environmentID" Type="int" />
+          <Property Name="supportGroupID" Type="int" />
+          <Property Name="operatingSystemID" Type="int" />
+          <Property Name="skyfall" Type="varchar" MaxLength="255" />
+          <Property Name="skyfallNum" Type="int" />
+          <Property Name="skyfall_index" Type="decimal" Precision="8" Scale="6" />
+          <Property Name="AtosTeamID" Type="int" />
+          <Property Name="decomTypeID" Type="int" />
+          <Property Name="decomStartDate" Type="datetime" />
+          <Property Name="retirementCrq" Type="varchar" MaxLength="255" />
+          <Property Name="retirementChg" Type="varchar" MaxLength="255" />
+          <Property Name="retirementWo" Type="varchar" MaxLength="255" />
+          <Property Name="j_data_decom_only" Type="bit" />
+          <Property Name="forecastedStatusDate" Type="datetime" />
+          <Property Name="cabApprovalDate" Type="datetime" />
+          <Property Name="databaseTypeID" Type="int" />
+          <Property Name="java" Type="varchar" MaxLength="255" />
+          <Property Name="middleware" Type="varchar" MaxLength="255" />
+          <Property Name="citrix" Type="varchar" MaxLength="255" />
+          <Property Name="lcmWeek" Type="int" />
+          <Property Name="platforms" Type="varchar" MaxLength="255" />
+          <Property Name="complianceAssetID" Type="varchar" MaxLength="255" />
+          <Property Name="screamTeast" Type="varchar" MaxLength="255" />
+          <Property Name="serverInCorral_ID" Type="int" />
+          <Property Name="plannedDispositionID" Type="int" />
+          <Property Name="AppTeamTurnoverDate" Type="datetime" />
+          <Property Name="managedBy" Type="varchar" MaxLength="255" />
+          <Property Name="currentOsVersion" Type="int" />
+          <Property Name="futureOsVersion" Type="int" />
+          <Property Name="dateEnteredCorral" Type="datetime" />
+          <Property Name="followupMonth" Type="varchar" MaxLength="50" />
+          <Property Name="transformation" Type="varchar" MaxLength="50" />
+          <Property Name="afqOsVersion" Type="varchar" MaxLength="255" />
+          <Property Name="fiscalYear" Type="int" />
+          <Property Name="NZEV_Overlap" Type="bit" />
+          <Property Name="serverRequiresOsLicense" Type="varchar" MaxLength="255" />
+          <Property Name="NumCores" Type="int" />
+          <Property Name="NumProcessors" Type="int" />
+          <Property Name="NZEV_Remediation_Planned" Type="varchar" MaxLength="255" />
+          <Property Name="ISO_Exception_Number" Type="varchar" MaxLength="255" />
+          <Property Name="COG_Supported" Type="bit" />
+          <Property Name="countryRegionID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="text" />
+          <Property Name="ModifiedBy" Type="text" />
+        </EntityType>
+        <EntityType Name="FollowupMonth">
+          <Key>
+            <PropertyRef Name="FollowupMonthID" />
+          </Key>
+          <Property Name="FollowupMonthID" Type="int" Nullable="false" />
+          <Property Name="FollowupMonthName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GoalsTargets">
+          <Key>
+            <PropertyRef Name="GoalsTargetsID" />
+          </Key>
+          <Property Name="GoalsTargetsID" Type="int" Nullable="false" />
+          <Property Name="GoalsTargetsName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="GoalsTargetsNum" Type="int" Nullable="false" />
+          <Property Name="Modified" Type="date" />
+        </EntityType>
+        <EntityType Name="Grouping">
+          <Key>
+            <PropertyRef Name="groupingID" />
+          </Key>
+          <Property Name="groupingID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GroupingsType">
+          <Key>
+            <PropertyRef Name="GroupingsID" />
+          </Key>
+          <Property Name="GroupingsID" Type="int" Nullable="false" />
+          <Property Name="GroupingsName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InCorralType">
+          <Key>
+            <PropertyRef Name="InCorralTypeID" />
+          </Key>
+          <Property Name="InCorralTypeID" Type="int" Nullable="false" />
+          <Property Name="InCorralTypeName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OperatingSystem">
+          <Key>
+            <PropertyRef Name="operatingSystemID" />
+          </Key>
+          <Property Name="operatingSystemID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OperatingSystemVersion">
+          <Key>
+            <PropertyRef Name="osVersionID" />
+          </Key>
+          <Property Name="osVersionID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlannedDispositionType">
+          <Key>
+            <PropertyRef Name="PlannedDispositionTypeID" />
+          </Key>
+          <Property Name="PlannedDispositionTypeID" Type="int" Nullable="false" />
+          <Property Name="PlannedDispositionTypeName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Platform">
+          <Key>
+            <PropertyRef Name="platformID" />
+          </Key>
+          <Property Name="platformID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PlatformsType">
+          <Key>
+            <PropertyRef Name="PlatformsID" />
+          </Key>
+          <Property Name="PlatformsID" Type="int" Nullable="false" />
+          <Property Name="PlatformsName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Resources">
+          <Key>
+            <PropertyRef Name="ResourceID" />
+          </Key>
+          <Property Name="ResourceID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="250" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="250" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="250" />
+          <Property Name="email" Type="nvarchar" MaxLength="250" />
+          <Property Name="phone" Type="nvarchar" MaxLength="250" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ScreamTestType">
+          <Key>
+            <PropertyRef Name="ScreamTestID" />
+          </Key>
+          <Property Name="ScreamTestID" Type="int" Nullable="false" />
+          <Property Name="ScreamTestName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServerInCorral">
+          <Key>
+            <PropertyRef Name="serverInCorral_ID" />
+          </Key>
+          <Property Name="serverInCorral_ID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ServersInCorralType">
+          <Key>
+            <PropertyRef Name="CorralTypeID" />
+          </Key>
+          <Property Name="CorralTypeID" Type="int" Nullable="false" />
+          <Property Name="CorralTypeName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="siteID" />
+          </Key>
+          <Property Name="siteID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusesType">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="StatusTypeName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusHistory">
+          <Key>
+            <PropertyRef Name="statusHistoryID" />
+          </Key>
+          <Property Name="statusHistoryID" Type="int" Nullable="false" />
+          <Property Name="statusID" Type="int" Nullable="false" />
+          <Property Name="lcmID" Type="int" Nullable="false" />
+          <Property Name="startDate" Type="datetime" />
+          <Property Name="endDate" Type="datetime" />
+          <Property Name="dueDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StatusHistoryArchive">
+          <Key>
+            <PropertyRef Name="statusHistoryID" />
+          </Key>
+          <Property Name="statusHistoryID" Type="int" Nullable="false" />
+          <Property Name="statusID" Type="int" Nullable="false" />
+          <Property Name="lcmID" Type="int" Nullable="false" />
+          <Property Name="startDate" Type="datetime" />
+          <Property Name="endDate" Type="datetime" />
+          <Property Name="dueDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StatusType">
+          <Key>
+            <PropertyRef Name="statusID" />
+          </Key>
+          <Property Name="statusID" Type="int" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="250" />
+          <Property Name="modifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SupportGroupCmdb">
+          <Key>
+            <PropertyRef Name="supportGroupID" />
+          </Key>
+          <Property Name="supportGroupID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LifecycleManagement.dbo.systranschemas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="systranschemas">
+          <Key>
+            <PropertyRef Name="tabid" />
+            <PropertyRef Name="startlsn" />
+            <PropertyRef Name="endlsn" />
+            <PropertyRef Name="typeid" />
+          </Key>
+          <Property Name="tabid" Type="int" Nullable="false" />
+          <Property Name="startlsn" Type="binary" MaxLength="10" Nullable="false" />
+          <Property Name="endlsn" Type="binary" MaxLength="10" Nullable="false" />
+          <Property Name="typeid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkOrder">
+          <Key>
+            <PropertyRef Name="workOrderID" />
+          </Key>
+          <Property Name="workOrderID" Type="int" Nullable="false" />
+          <Property Name="lcmID" Type="int" Nullable="false" />
+          <Property Name="reasonID" Type="int" Nullable="false" />
+          <Property Name="WO_StatusID" Type="int" />
+          <Property Name="startDate" Type="datetime" />
+          <Property Name="endDate" Type="datetime" />
+          <Property Name="dueDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="WorkOrderReason">
+          <Key>
+            <PropertyRef Name="reasonID" />
+          </Key>
+          <Property Name="reasonID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="WorkOrderStatus">
+          <Key>
+            <PropertyRef Name="WO_StatusID" />
+          </Key>
+          <Property Name="WO_StatusID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_ExecutionList_new_CorralPlannedDisposition">
+          <End Role="CorralPlannedDisposition" Type="Self.CorralPlannedDisposition" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CorralPlannedDisposition">
+              <PropertyRef Name="plannedDispositionID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="plannedDispositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_CountryRegion">
+          <End Role="CountryRegion" Type="Self.CountryRegion" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryRegion">
+              <PropertyRef Name="countryRegionID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="countryRegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_DatabaseType">
+          <End Role="DatabaseType" Type="Self.DatabaseType" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatabaseType">
+              <PropertyRef Name="databaseTypeID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="databaseTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_DecomType">
+          <End Role="DecomType" Type="Self.DecomType" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DecomType">
+              <PropertyRef Name="decomTypeID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="decomTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="AtosTeamID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="AtosTeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_Environment">
+          <End Role="Environment" Type="Self.Environment" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Environment">
+              <PropertyRef Name="environmentID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="environmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_Grouping">
+          <End Role="Grouping" Type="Self.Grouping" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grouping">
+              <PropertyRef Name="groupingID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="groupingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_OperatingSystem">
+          <End Role="OperatingSystem" Type="Self.OperatingSystem" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperatingSystem">
+              <PropertyRef Name="operatingSystemID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="operatingSystemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_Resources">
+          <End Role="Resources" Type="Self.Resources" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resources">
+              <PropertyRef Name="ResourceID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="resourceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_ServerInCorral">
+          <End Role="ServerInCorral" Type="Self.ServerInCorral" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServerInCorral">
+              <PropertyRef Name="serverInCorral_ID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="serverInCorral_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_Site">
+          <End Role="Site" Type="Self.Site" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="siteID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="siteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_StatusType">
+          <End Role="StatusType" Type="Self.StatusType" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusType">
+              <PropertyRef Name="statusID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="statusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_SupportGroupCmdb">
+          <End Role="SupportGroupCmdb" Type="Self.SupportGroupCmdb" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupportGroupCmdb">
+              <PropertyRef Name="supportGroupID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="supportGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_WorkOrder">
+          <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrder">
+              <PropertyRef Name="workOrderID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="workOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusHistory_ExecutionList_new">
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="1" />
+          <End Role="StatusHistory" Type="Self.StatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExecutionList_new">
+              <PropertyRef Name="lcmID" />
+            </Principal>
+            <Dependent Role="StatusHistory">
+              <PropertyRef Name="lcmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusHistoryArchive_StatusHistory">
+          <End Role="StatusHistory" Type="Self.StatusHistory" Multiplicity="1" />
+          <End Role="StatusHistoryArchive" Type="Self.StatusHistoryArchive" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="StatusHistory">
+              <PropertyRef Name="statusHistoryID" />
+            </Principal>
+            <Dependent Role="StatusHistoryArchive">
+              <PropertyRef Name="statusHistoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrder_WorkOrderReason">
+          <End Role="WorkOrderReason" Type="Self.WorkOrderReason" Multiplicity="1" />
+          <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrderReason">
+              <PropertyRef Name="reasonID" />
+            </Principal>
+            <Dependent Role="WorkOrder">
+              <PropertyRef Name="reasonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrder_WorkOrderStatus">
+          <End Role="WorkOrderStatus" Type="Self.WorkOrderStatus" Multiplicity="0..1" />
+          <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrderStatus">
+              <PropertyRef Name="WO_StatusID" />
+            </Principal>
+            <Dependent Role="WorkOrder">
+              <PropertyRef Name="WO_StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LifecycleManagementModelStoreContainer">
+          <EntitySet Name="captured_columns" EntityType="Self.captured_columns" Schema="cdc" store:Type="Tables" />
+          <EntitySet Name="change_tables" EntityType="Self.change_tables" Schema="cdc" store:Type="Tables" />
+          <EntitySet Name="ddl_history" EntityType="Self.ddl_history" Schema="cdc" store:Type="Tables" />
+          <EntitySet Name="index_columns" EntityType="Self.index_columns" Schema="cdc" store:Type="Tables" />
+          <EntitySet Name="lsn_time_mapping" EntityType="Self.lsn_time_mapping" Schema="cdc" store:Type="Tables" />
+          <EntitySet Name="AssignedResource" EntityType="Self.AssignedResource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AtosTeam" EntityType="Self.AtosTeam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CmoFmoType" EntityType="Self.CmoFmoType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CorralPlannedDisposition" EntityType="Self.CorralPlannedDisposition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CountryRegion" EntityType="Self.CountryRegion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CRQ_CHG_WO_StatusType" EntityType="Self.CRQ_CHG_WO_StatusType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatabaseType" EntityType="Self.DatabaseType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DecomType" EntityType="Self.DecomType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Environment" EntityType="Self.Environment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventLog" EntityType="Self.EventLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventLogs" EntityType="Self.EventLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExecutionList" EntityType="Self.ExecutionList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExecutionList_new" EntityType="Self.ExecutionList_new" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FollowupMonth" EntityType="Self.FollowupMonth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoalsTargets" EntityType="Self.GoalsTargets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grouping" EntityType="Self.Grouping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupingsType" EntityType="Self.GroupingsType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InCorralType" EntityType="Self.InCorralType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperatingSystem" EntityType="Self.OperatingSystem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperatingSystemVersion" EntityType="Self.OperatingSystemVersion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlannedDispositionType" EntityType="Self.PlannedDispositionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Platform" EntityType="Self.Platform" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlatformsType" EntityType="Self.PlatformsType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resources" EntityType="Self.Resources" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScreamTestType" EntityType="Self.ScreamTestType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServerInCorral" EntityType="Self.ServerInCorral" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServersInCorralType" EntityType="Self.ServersInCorralType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Site" EntityType="Self.Site" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusesType" EntityType="Self.StatusesType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusHistory" EntityType="Self.StatusHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusHistoryArchive" EntityType="Self.StatusHistoryArchive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusType" EntityType="Self.StatusType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupportGroupCmdb" EntityType="Self.SupportGroupCmdb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkOrder" EntityType="Self.WorkOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkOrderReason" EntityType="Self.WorkOrderReason" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkOrderStatus" EntityType="Self.WorkOrderStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbo_ExecutionList_CT" EntityType="Self.dbo_ExecutionList_CT" store:Type="Tables" store:Schema="cdc">
+            <DefiningQuery>SELECT 
+    [dbo_ExecutionList_CT].[__$start_lsn] AS [__$start_lsn], 
+    [dbo_ExecutionList_CT].[__$end_lsn] AS [__$end_lsn], 
+    [dbo_ExecutionList_CT].[__$seqval] AS [__$seqval], 
+    [dbo_ExecutionList_CT].[__$operation] AS [__$operation], 
+    [dbo_ExecutionList_CT].[__$update_mask] AS [__$update_mask], 
+    [dbo_ExecutionList_CT].[lcmID] AS [lcmID], 
+    [dbo_ExecutionList_CT].[currentServerName] AS [currentServerName], 
+    [dbo_ExecutionList_CT].[cmo] AS [cmo], 
+    [dbo_ExecutionList_CT].[newServerName] AS [newServerName], 
+    [dbo_ExecutionList_CT].[fmo] AS [fmo], 
+    [dbo_ExecutionList_CT].[status] AS [status], 
+    [dbo_ExecutionList_CT].[status27Date] AS [status27Date], 
+    [dbo_ExecutionList_CT].[notes] AS [notes], 
+    [dbo_ExecutionList_CT].[waveNum] AS [waveNum], 
+    [dbo_ExecutionList_CT].[grouping] AS [grouping], 
+    [dbo_ExecutionList_CT].[CRQ_CHG_WO] AS [CRQ_CHG_WO], 
+    [dbo_ExecutionList_CT].[CRQ_CHG_WOStatus] AS [CRQ_CHG_WOStatus], 
+    [dbo_ExecutionList_CT].[HandoverDate] AS [HandoverDate], 
+    [dbo_ExecutionList_CT].[region] AS [region], 
+    [dbo_ExecutionList_CT].[country] AS [country], 
+    [dbo_ExecutionList_CT].[site] AS [site], 
+    [dbo_ExecutionList_CT].[siteComments] AS [siteComments], 
+    [dbo_ExecutionList_CT].[appName] AS [appName], 
+    [dbo_ExecutionList_CT].[appOwner] AS [appOwner], 
+    [dbo_ExecutionList_CT].[monsantoPM] AS [monsantoPM], 
+    [dbo_ExecutionList_CT].[atosPM] AS [atosPM], 
+    [dbo_ExecutionList_CT].[escalationNotes] AS [escalationNotes], 
+    [dbo_ExecutionList_CT].[personContacted] AS [personContacted], 
+    [dbo_ExecutionList_CT].[contactedDate] AS [contactedDate], 
+    [dbo_ExecutionList_CT].[serialNum] AS [serialNum], 
+    [dbo_ExecutionList_CT].[pmNotes] AS [pmNotes], 
+    [dbo_ExecutionList_CT].[environment] AS [environment], 
+    [dbo_ExecutionList_CT].[supportGroupCmdb] AS [supportGroupCmdb], 
+    [dbo_ExecutionList_CT].[operatingSystem] AS [operatingSystem], 
+    [dbo_ExecutionList_CT].[skyfall] AS [skyfall], 
+    [dbo_ExecutionList_CT].[skyfallNum] AS [skyfallNum], 
+    [dbo_ExecutionList_CT].[skyfallIndex] AS [skyfallIndex], 
+    [dbo_ExecutionList_CT].[atosTeamID] AS [atosTeamID], 
+    [dbo_ExecutionList_CT].[decomType] AS [decomType], 
+    [dbo_ExecutionList_CT].[decomStartDate] AS [decomStartDate], 
+    [dbo_ExecutionList_CT].[retirementCrq] AS [retirementCrq], 
+    [dbo_ExecutionList_CT].[retirementChg] AS [retirementChg], 
+    [dbo_ExecutionList_CT].[retirementWo] AS [retirementWo], 
+    [dbo_ExecutionList_CT].[decomData] AS [decomData], 
+    [dbo_ExecutionList_CT].[forecastedStatusDate] AS [forecastedStatusDate], 
+    [dbo_ExecutionList_CT].[cabApprovalDate] AS [cabApprovalDate], 
+    [dbo_ExecutionList_CT].[database] AS [database], 
+    [dbo_ExecutionList_CT].[java] AS [java], 
+    [dbo_ExecutionList_CT].[middleware] AS [middleware], 
+    [dbo_ExecutionList_CT].[citrix] AS [citrix], 
+    [dbo_ExecutionList_CT].[lcmWeek] AS [lcmWeek], 
+    [dbo_ExecutionList_CT].[platforms] AS [platforms], 
+    [dbo_ExecutionList_CT].[complianceAssetID] AS [complianceAssetID], 
+    [dbo_ExecutionList_CT].[screamTest] AS [screamTest], 
+    [dbo_ExecutionList_CT].[serverInCorral] AS [serverInCorral], 
+    [dbo_ExecutionList_CT].[corralPlannedDisposition] AS [corralPlannedDisposition], 
+    [dbo_ExecutionList_CT].[AppTeamTurnoverDate] AS [AppTeamTurnoverDate], 
+    [dbo_ExecutionList_CT].[managedBy] AS [managedBy], 
+    [dbo_ExecutionList_CT].[currentOsVersion] AS [currentOsVersion], 
+    [dbo_ExecutionList_CT].[futureOsVersion] AS [futureOsVersion], 
+    [dbo_ExecutionList_CT].[dateEnteredCorral] AS [dateEnteredCorral], 
+    [dbo_ExecutionList_CT].[followupMonth] AS [followupMonth], 
+    [dbo_ExecutionList_CT].[transformation] AS [transformation], 
+    [dbo_ExecutionList_CT].[afqOsVersion] AS [afqOsVersion], 
+    [dbo_ExecutionList_CT].[fiscalYear] AS [fiscalYear], 
+    [dbo_ExecutionList_CT].[ResourceID] AS [ResourceID], 
+    [dbo_ExecutionList_CT].[CreatedDate] AS [CreatedDate], 
+    [dbo_ExecutionList_CT].[ModifiedDate] AS [ModifiedDate], 
+    [dbo_ExecutionList_CT].[CreatedBy] AS [CreatedBy], 
+    [dbo_ExecutionList_CT].[ModifiedBy] AS [ModifiedBy], 
+    [dbo_ExecutionList_CT].[__$command_id] AS [__$command_id]
+    FROM [cdc].[dbo_ExecutionList_CT] AS [dbo_ExecutionList_CT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="dbo_ExecutionList_new_CT" EntityType="Self.dbo_ExecutionList_new_CT" store:Type="Tables" store:Schema="cdc">
+            <DefiningQuery>SELECT 
+    [dbo_ExecutionList_new_CT].[__$start_lsn] AS [__$start_lsn], 
+    [dbo_ExecutionList_new_CT].[__$end_lsn] AS [__$end_lsn], 
+    [dbo_ExecutionList_new_CT].[__$seqval] AS [__$seqval], 
+    [dbo_ExecutionList_new_CT].[__$operation] AS [__$operation], 
+    [dbo_ExecutionList_new_CT].[__$update_mask] AS [__$update_mask], 
+    [dbo_ExecutionList_new_CT].[lcmID] AS [lcmID], 
+    [dbo_ExecutionList_new_CT].[resourceID] AS [resourceID], 
+    [dbo_ExecutionList_new_CT].[statusID] AS [statusID], 
+    [dbo_ExecutionList_new_CT].[groupingID] AS [groupingID], 
+    [dbo_ExecutionList_new_CT].[workOrderID] AS [workOrderID], 
+    [dbo_ExecutionList_new_CT].[WO_StatusID] AS [WO_StatusID], 
+    [dbo_ExecutionList_new_CT].[currentServerName] AS [currentServerName], 
+    [dbo_ExecutionList_new_CT].[cmo] AS [cmo], 
+    [dbo_ExecutionList_new_CT].[newServerName] AS [newServerName], 
+    [dbo_ExecutionList_new_CT].[fmo] AS [fmo], 
+    [dbo_ExecutionList_new_CT].[status27Date] AS [status27Date], 
+    [dbo_ExecutionList_new_CT].[notes] AS [notes], 
+    [dbo_ExecutionList_new_CT].[waveNum] AS [waveNum], 
+    [dbo_ExecutionList_new_CT].[handoverDate] AS [handoverDate], 
+    [dbo_ExecutionList_new_CT].[region] AS [region], 
+    [dbo_ExecutionList_new_CT].[country] AS [country], 
+    [dbo_ExecutionList_new_CT].[siteID] AS [siteID], 
+    [dbo_ExecutionList_new_CT].[siteComments] AS [siteComments], 
+    [dbo_ExecutionList_new_CT].[appName] AS [appName], 
+    [dbo_ExecutionList_new_CT].[appOwner] AS [appOwner], 
+    [dbo_ExecutionList_new_CT].[monsantoPM] AS [monsantoPM], 
+    [dbo_ExecutionList_new_CT].[atosPM] AS [atosPM], 
+    [dbo_ExecutionList_new_CT].[escalationNotes] AS [escalationNotes], 
+    [dbo_ExecutionList_new_CT].[personContacted] AS [personContacted], 
+    [dbo_ExecutionList_new_CT].[contactedDate] AS [contactedDate], 
+    [dbo_ExecutionList_new_CT].[serialNum] AS [serialNum], 
+    [dbo_ExecutionList_new_CT].[pmNotes] AS [pmNotes], 
+    [dbo_ExecutionList_new_CT].[environmentID] AS [environmentID], 
+    [dbo_ExecutionList_new_CT].[supportGroupID] AS [supportGroupID], 
+    [dbo_ExecutionList_new_CT].[operatingSystemID] AS [operatingSystemID], 
+    [dbo_ExecutionList_new_CT].[skyfall] AS [skyfall], 
+    [dbo_ExecutionList_new_CT].[skyfallNum] AS [skyfallNum], 
+    [dbo_ExecutionList_new_CT].[skyfall_index] AS [skyfall_index], 
+    [dbo_ExecutionList_new_CT].[AtosTeamID] AS [AtosTeamID], 
+    [dbo_ExecutionList_new_CT].[decomTypeID] AS [decomTypeID], 
+    [dbo_ExecutionList_new_CT].[decomStartDate] AS [decomStartDate], 
+    [dbo_ExecutionList_new_CT].[retirementCrq] AS [retirementCrq], 
+    [dbo_ExecutionList_new_CT].[retirementChg] AS [retirementChg], 
+    [dbo_ExecutionList_new_CT].[retirementWo] AS [retirementWo], 
+    [dbo_ExecutionList_new_CT].[j_data_decom_only] AS [j_data_decom_only], 
+    [dbo_ExecutionList_new_CT].[forecastedStatusDate] AS [forecastedStatusDate], 
+    [dbo_ExecutionList_new_CT].[cabApprovalDate] AS [cabApprovalDate], 
+    [dbo_ExecutionList_new_CT].[databaseTypeID] AS [databaseTypeID], 
+    [dbo_ExecutionList_new_CT].[java] AS [java], 
+    [dbo_ExecutionList_new_CT].[middleware] AS [middleware], 
+    [dbo_ExecutionList_new_CT].[citrix] AS [citrix], 
+    [dbo_ExecutionList_new_CT].[lcmWeek] AS [lcmWeek], 
+    [dbo_ExecutionList_new_CT].[platforms] AS [platforms], 
+    [dbo_ExecutionList_new_CT].[complianceAssetID] AS [complianceAssetID], 
+    [dbo_ExecutionList_new_CT].[screamTeast] AS [screamTeast], 
+    [dbo_ExecutionList_new_CT].[serverInCorral_ID] AS [serverInCorral_ID], 
+    [dbo_ExecutionList_new_CT].[plannedDispositionID] AS [plannedDispositionID], 
+    [dbo_ExecutionList_new_CT].[AppTeamTurnoverDate] AS [AppTeamTurnoverDate], 
+    [dbo_ExecutionList_new_CT].[managedBy] AS [managedBy], 
+    [dbo_ExecutionList_new_CT].[currentOsVersion] AS [currentOsVersion], 
+    [dbo_ExecutionList_new_CT].[futureOsVersion] AS [futureOsVersion], 
+    [dbo_ExecutionList_new_CT].[dateEnteredCorral] AS [dateEnteredCorral], 
+    [dbo_ExecutionList_new_CT].[followupMonth] AS [followupMonth], 
+    [dbo_ExecutionList_new_CT].[transformation] AS [transformation], 
+    [dbo_ExecutionList_new_CT].[afqOsVersion] AS [afqOsVersion], 
+    [dbo_ExecutionList_new_CT].[fiscalYear] AS [fiscalYear], 
+    [dbo_ExecutionList_new_CT].[NZEV_Overlap] AS [NZEV_Overlap], 
+    [dbo_ExecutionList_new_CT].[serverRequiresOsLicense] AS [serverRequiresOsLicense], 
+    [dbo_ExecutionList_new_CT].[NumCores] AS [NumCores], 
+    [dbo_ExecutionList_new_CT].[NumProcessors] AS [NumProcessors], 
+    [dbo_ExecutionList_new_CT].[NZEV_Remediation_Planned] AS [NZEV_Remediation_Planned], 
+    [dbo_ExecutionList_new_CT].[ISO_Exception_Number] AS [ISO_Exception_Number], 
+    [dbo_ExecutionList_new_CT].[COG_Supported] AS [COG_Supported], 
+    [dbo_ExecutionList_new_CT].[countryRegionID] AS [countryRegionID], 
+    [dbo_ExecutionList_new_CT].[__$command_id] AS [__$command_id]
+    FROM [cdc].[dbo_ExecutionList_new_CT] AS [dbo_ExecutionList_new_CT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="systranschemas" EntityType="Self.systranschemas" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [systranschemas].[tabid] AS [tabid], 
+    [systranschemas].[startlsn] AS [startlsn], 
+    [systranschemas].[endlsn] AS [endlsn], 
+    [systranschemas].[typeid] AS [typeid]
+    FROM [dbo].[systranschemas] AS [systranschemas]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ExecutionList_new_CorralPlannedDisposition" Association="Self.FK_ExecutionList_new_CorralPlannedDisposition">
+            <End Role="CorralPlannedDisposition" EntitySet="CorralPlannedDisposition" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_CountryRegion" Association="Self.FK_ExecutionList_new_CountryRegion">
+            <End Role="CountryRegion" EntitySet="CountryRegion" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_DatabaseType" Association="Self.FK_ExecutionList_new_DatabaseType">
+            <End Role="DatabaseType" EntitySet="DatabaseType" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_DecomType" Association="Self.FK_ExecutionList_new_DecomType">
+            <End Role="DecomType" EntitySet="DecomType" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_Department" Association="Self.FK_ExecutionList_new_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_Environment" Association="Self.FK_ExecutionList_new_Environment">
+            <End Role="Environment" EntitySet="Environment" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_Grouping" Association="Self.FK_ExecutionList_new_Grouping">
+            <End Role="Grouping" EntitySet="Grouping" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_OperatingSystem" Association="Self.FK_ExecutionList_new_OperatingSystem">
+            <End Role="OperatingSystem" EntitySet="OperatingSystem" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_Resources" Association="Self.FK_ExecutionList_new_Resources">
+            <End Role="Resources" EntitySet="Resources" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_ServerInCorral" Association="Self.FK_ExecutionList_new_ServerInCorral">
+            <End Role="ServerInCorral" EntitySet="ServerInCorral" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_Site" Association="Self.FK_ExecutionList_new_Site">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_StatusType" Association="Self.FK_ExecutionList_new_StatusType">
+            <End Role="StatusType" EntitySet="StatusType" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_SupportGroupCmdb" Association="Self.FK_ExecutionList_new_SupportGroupCmdb">
+            <End Role="SupportGroupCmdb" EntitySet="SupportGroupCmdb" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_WorkOrder" Association="Self.FK_ExecutionList_new_WorkOrder">
+            <End Role="WorkOrder" EntitySet="WorkOrder" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusHistory_ExecutionList_new" Association="Self.FK_StatusHistory_ExecutionList_new">
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+            <End Role="StatusHistory" EntitySet="StatusHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusHistoryArchive_StatusHistory" Association="Self.FK_StatusHistoryArchive_StatusHistory">
+            <End Role="StatusHistory" EntitySet="StatusHistory" />
+            <End Role="StatusHistoryArchive" EntitySet="StatusHistoryArchive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrder_WorkOrderReason" Association="Self.FK_WorkOrder_WorkOrderReason">
+            <End Role="WorkOrderReason" EntitySet="WorkOrderReason" />
+            <End Role="WorkOrder" EntitySet="WorkOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrder_WorkOrderStatus" Association="Self.FK_WorkOrder_WorkOrderStatus">
+            <End Role="WorkOrderStatus" EntitySet="WorkOrderStatus" />
+            <End Role="WorkOrder" EntitySet="WorkOrder" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LifecycleManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="captured_columns">
+          <Key>
+            <PropertyRef Name="object_id" />
+            <PropertyRef Name="column_ordinal" />
+          </Key>
+          <Property Name="object_id" Type="Int32" Nullable="false" />
+          <Property Name="column_name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="column_id" Type="Int32" />
+          <Property Name="column_type" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="column_ordinal" Type="Int32" Nullable="false" />
+          <Property Name="is_computed" Type="Boolean" />
+          <Property Name="masking_function" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="change_tables">
+          <Key>
+            <PropertyRef Name="object_id" />
+          </Key>
+          <Property Name="object_id" Type="Int32" Nullable="false" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="source_object_id" Type="Int32" />
+          <Property Name="capture_instance" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_lsn" Type="Binary" MaxLength="10" FixedLength="true" />
+          <Property Name="end_lsn" Type="Binary" MaxLength="10" FixedLength="true" />
+          <Property Name="supports_net_changes" Type="Boolean" />
+          <Property Name="has_drop_pending" Type="Boolean" />
+          <Property Name="role_name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="index_name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="filegroup_name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="partition_switch" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ddl_history">
+          <Key>
+            <PropertyRef Name="object_id" />
+            <PropertyRef Name="ddl_lsn" />
+          </Key>
+          <Property Name="source_object_id" Type="Int32" />
+          <Property Name="object_id" Type="Int32" Nullable="false" />
+          <Property Name="required_column_update" Type="Boolean" />
+          <Property Name="ddl_command" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ddl_lsn" Type="Binary" MaxLength="10" FixedLength="true" Nullable="false" />
+          <Property Name="ddl_time" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="index_columns">
+          <Key>
+            <PropertyRef Name="object_id" />
+            <PropertyRef Name="index_ordinal" />
+            <PropertyRef Name="column_id" />
+          </Key>
+          <Property Name="object_id" Type="Int32" Nullable="false" />
+          <Property Name="column_name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="index_ordinal" Type="Byte" Nullable="false" />
+          <Property Name="column_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lsn_time_mapping">
+          <Key>
+            <PropertyRef Name="start_lsn" />
+          </Key>
+          <Property Name="start_lsn" Type="Binary" MaxLength="10" FixedLength="true" Nullable="false" />
+          <Property Name="tran_begin_time" Type="DateTime" Precision="3" />
+          <Property Name="tran_end_time" Type="DateTime" Precision="3" />
+          <Property Name="tran_id" Type="Binary" MaxLength="10" FixedLength="false" />
+          <Property Name="tran_begin_lsn" Type="Binary" MaxLength="10" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="AssignedResource">
+          <Key>
+            <PropertyRef Name="AssignedResourceID" />
+          </Key>
+          <Property Name="AssignedResourceID" Type="Int32" Nullable="false" />
+          <Property Name="AssignedResourceName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AtosTeam">
+          <Key>
+            <PropertyRef Name="AtosTeamID" />
+          </Key>
+          <Property Name="AtosTeamID" Type="Int32" Nullable="false" />
+          <Property Name="AtosTeamName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CmoFmoType">
+          <Key>
+            <PropertyRef Name="CmoFmoID" />
+          </Key>
+          <Property Name="CmoFmoID" Type="Int32" Nullable="false" />
+          <Property Name="CmoFmoName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CorralPlannedDisposition">
+          <Key>
+            <PropertyRef Name="plannedDispositionID" />
+          </Key>
+          <Property Name="plannedDispositionID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_ExecutionList_new_CorralPlannedDisposition" FromRole="CorralPlannedDisposition" ToRole="ExecutionList_new" />
+        </EntityType>
+        <EntityType Name="CountryRegion">
+          <Key>
+            <PropertyRef Name="countryRegionID" />
+          </Key>
+          <Property Name="countryRegionID" Type="Int32" Nullable="false" />
+          <Property Name="region" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_ExecutionList_new_CountryRegion" FromRole="CountryRegion" ToRole="ExecutionList_new" />
+        </EntityType>
+        <EntityType Name="CRQ_CHG_WO_StatusType">
+          <Key>
+            <PropertyRef Name="CRQ_CHG_WO_TypeID" />
+          </Key>
+          <Property Name="CRQ_CHG_WO_TypeID" Type="Int32" Nullable="false" />
+          <Property Name="CRQ_CHG_WO_TypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DatabaseType">
+          <Key>
+            <PropertyRef Name="databaseTypeID" />
+          </Key>
+          <Property Name="databaseTypeID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_ExecutionList_new_DatabaseType" FromRole="DatabaseType" ToRole="ExecutionList_new" />
+        </EntityType>
+        <EntityType Name="DecomType">
+          <Key>
+            <PropertyRef Name="decomTypeID" />
+          </Key>
+          <Property Name="decomTypeID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_ExecutionList_new_DecomType" FromRole="DecomType" ToRole="ExecutionList_new" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="AtosTeamID" />
+          </Key>
+          <Property Name="AtosTeamID" Type="Int32" Nullable="false" />
+          <Property Name="Department1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_ExecutionList_new_Department" FromRole="Department" ToRole="ExecutionList_new" />
+        </EntityType>
+        <EntityType Name="Environment">
+          <Key>
+            <PropertyRef Name="environmentID" />
+          </Key>
+          <Property Name="environmentID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_ExecutionList_new_Environment" FromRole="Environment" ToRole="ExecutionList_new" />
+        </EntityType>
+        <EntityType Name="EventLog">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServerID" Type="Int32" Nullable="false" />
+          <Property Name="EventType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LifecycleStatusID" Type="Int32" />
+          <Property Name="Timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="InitiatedBy" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="EventLog1">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServerID" Type="Int32" Nullable="false" />
+          <Property Name="EventType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LifecycleStatusID" Type="Int32" />
+          <Property Name="TimeStamped" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="InitiatedBy" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Time" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ExecutionList">
+          <Key>
+            <PropertyRef Name="lcmID" />
+          </Key>
+          <Property Name="lcmID" Type="Int32" Nullable="false" />
+          <Property Name="currentServerName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cmo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="newServerName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="fmo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status27Date" Type="DateTime" Precision="0" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="waveNum" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="grouping" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CRQ_CHG_WO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CRQ_CHG_WOStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HandoverDate" Type="DateTime" Precision="0" />
+          <Property Name="region" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="site" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="siteComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="appName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="appOwner" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="monsantoPM" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="atosPM" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="escalationNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="personContacted" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="contactedDate" Type="DateTime" Precision="0" />
+          <Property Name="serialNum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="pmNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="environment" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="supportGroupCmdb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="operatingSystem" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="skyfall" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="skyfallNum" Type="Int32" />
+          <Property Name="skyfallIndex" Type="Decimal" Precision="8" Scale="6" />
+          <Property Name="atosTeamID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="decomType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="decomStartDate" Type="DateTime" Precision="0" />
+          <Property Name="retirementCrq" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="retirementChg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="retirementWo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="decomData" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="forecastedStatusDate" Type="DateTime" Precision="0" />
+          <Property Name="cabApprovalDate" Type="DateTime" Precision="0" />
+          <Property Name="database" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="java" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="middleware" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="citrix" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="lcmWeek" Type="Int32" />
+          <Property Name="platforms" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="complianceAssetID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="screamTest" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="serverInCorral" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="corralPlannedDisposition" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AppTeamTurnoverDate" Type="DateTime" Precision="0" />
+          <Property Name="managedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="currentOsVersion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="futureOsVersion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dateEnteredCorral" Type="DateTime" Precision="0" />
+          <Property Name="followupMonth" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="transformation" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="afqOsVersion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="fiscalYear" Type="Int32" />
+          <Property Name="ResourceID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NZEVOverlap" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ServerRequiresOSLicense" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NumCores" Type="Decimal" Precision="8" Scale="6" />
+          <Property Name="NumProcessors" Type="Decimal" Precision="8" Scale="6" />
+          <Property Name="NZEVRemediationPlanned" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ISOExceptionNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="COGSupported" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LcmType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ExecutionList_new">
+          <Key>
+            <PropertyRef Name="lcmID" />
+          </Key>
+          <Property Name="lcmID" Type="Int32" Nullable="false" />
+          <Property Name="resourceID" Type="Int32" />
+          <Property Name="statusID" Type="Int32" />
+          <Property Name="groupingID" Type="Int32" />
+          <Property Name="workOrderID" Type="Int32" />
+          <Property Name="WO_StatusID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="currentServerName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cmo" Type="Int32" />
+          <Property Name="newServerName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="fmo" Type="Int32" />
+          <Property Name="status27Date" Type="DateTime" Precision="0" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="waveNum" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="handoverDate" Type="DateTime" Precision="0" />
+          <Property Name="region" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="siteID" Type="Int32" />
+          <Property Name="siteComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="appName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="appOwner" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="monsantoPM" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="atosPM" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="escalationNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="personContacted" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="contactedDate" Type="DateTime" Precision="3" />
+          <Property Name="serialNum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="pmNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="environmentID" Type="Int32" />
+          <Property Name="supportGroupID" Type="Int32" />
+          <Property Name="operatingSystemID" Type="Int32" />
+          <Property Name="skyfall" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="skyfallNum" Type="Int32" />
+          <Property Name="skyfall_index" Type="Decimal" Precision="8" Scale="6" />
+          <Property Name="AtosTeamID" Type="Int32" />
+          <Property Name="decomTypeID" Type="Int32" />
+          <Property Name="decomStartDate" Type="DateTime" Precision="3" />
+          <Property Name="retirementCrq" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="retirementChg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="retirementWo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="j_data_decom_only" Type="Boolean" />
+          <Property Name="forecastedStatusDate" Type="DateTime" Precision="3" />
+          <Property Name="cabApprovalDate" Type="DateTime" Precision="3" />
+          <Property Name="databaseTypeID" Type="Int32" />
+          <Property Name="java" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="middleware" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="citrix" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="lcmWeek" Type="Int32" />
+          <Property Name="platforms" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="complianceAssetID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="screamTeast" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="serverInCorral_ID" Type="Int32" />
+          <Property Name="plannedDispositionID" Type="Int32" />
+          <Property Name="AppTeamTurnoverDate" Type="DateTime" Precision="3" />
+          <Property Name="managedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="currentOsVersion" Type="Int32" />
+          <Property Name="futureOsVersion" Type="Int32" />
+          <Property Name="dateEnteredCorral" Type="DateTime" Precision="3" />
+          <Property Name="followupMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="transformation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="afqOsVersion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="fiscalYear" Type="Int32" />
+          <Property Name="NZEV_Overlap" Type="Boolean" />
+          <Property Name="serverRequiresOsLicense" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NumCores" Type="Int32" />
+          <Property Name="NumProcessors" Type="Int32" />
+          <Property Name="NZEV_Remediation_Planned" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ISO_Exception_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="COG_Supported" Type="Boolean" />
+          <Property Name="countryRegionID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CorralPlannedDisposition" Relationship="Self.FK_ExecutionList_new_CorralPlannedDisposition" FromRole="ExecutionList_new" ToRole="CorralPlannedDisposition" />
+          <NavigationProperty Name="CountryRegion" Relationship="Self.FK_ExecutionList_new_CountryRegion" FromRole="ExecutionList_new" ToRole="CountryRegion" />
+          <NavigationProperty Name="DatabaseType" Relationship="Self.FK_ExecutionList_new_DatabaseType" FromRole="ExecutionList_new" ToRole="DatabaseType" />
+          <NavigationProperty Name="DecomType" Relationship="Self.FK_ExecutionList_new_DecomType" FromRole="ExecutionList_new" ToRole="DecomType" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_ExecutionList_new_Department" FromRole="ExecutionList_new" ToRole="Department" />
+          <NavigationProperty Name="Environment" Relationship="Self.FK_ExecutionList_new_Environment" FromRole="ExecutionList_new" ToRole="Environment" />
+          <NavigationProperty Name="Grouping" Relationship="Self.FK_ExecutionList_new_Grouping" FromRole="ExecutionList_new" ToRole="Grouping" />
+          <NavigationProperty Name="OperatingSystem" Relationship="Self.FK_ExecutionList_new_OperatingSystem" FromRole="ExecutionList_new" ToRole="OperatingSystem" />
+          <NavigationProperty Name="Resource" Relationship="Self.FK_ExecutionList_new_Resources" FromRole="ExecutionList_new" ToRole="Resources" />
+          <NavigationProperty Name="ServerInCorral" Relationship="Self.FK_ExecutionList_new_ServerInCorral" FromRole="ExecutionList_new" ToRole="ServerInCorral" />
+          <NavigationProperty Name="Site" Relationship="Self.FK_ExecutionList_new_Site" FromRole="ExecutionList_new" ToRole="Site" />
+          <NavigationProperty Name="StatusType" Relationship="Self.FK_ExecutionList_new_StatusType" FromRole="ExecutionList_new" ToRole="StatusType" />
+          <NavigationProperty Name="SupportGroupCmdb" Relationship="Self.FK_ExecutionList_new_SupportGroupCmdb" FromRole="ExecutionList_new" ToRole="SupportGroupCmdb" />
+          <NavigationProperty Name="WorkOrder" Relationship="Self.FK_ExecutionList_new_WorkOrder" FromRole="ExecutionList_new" ToRole="WorkOrder" />
+          <NavigationProperty Name="StatusHistories" Relationship="Self.FK_StatusHistory_ExecutionList_new" FromRole="ExecutionList_new" ToRole="StatusHistory" />
+        </EntityType>
+        <EntityType Name="FollowupMonth">
+          <Key>
+            <PropertyRef Name="FollowupMonthID" />
+          </Key>
+          <Property Name="FollowupMonthID" Type="Int32" Nullable="false" />
+          <Property Name="FollowupMonthName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GoalsTarget">
+          <Key>
+            <PropertyRef Name="GoalsTargetsID" />
+          </Key>
+          <Property Name="GoalsTargetsID" Type="Int32" Nullable="false" />
+          <Property Name="GoalsTargetsName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GoalsTargetsNum" Type="Int32" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Grouping">
+          <Key>
+            <PropertyRef Name="groupingID" />
+          </Key>
+          <Property Name="groupingID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_ExecutionList_new_Grouping" FromRole="Grouping" ToRole="ExecutionList_new" />
+        </EntityType>
+        <EntityType Name="GroupingsType">
+          <Key>
+            <PropertyRef Name="GroupingsID" />
+          </Key>
+          <Property Name="GroupingsID" Type="Int32" Nullable="false" />
+          <Property Name="GroupingsName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InCorralType">
+          <Key>
+            <PropertyRef Name="InCorralTypeID" />
+          </Key>
+          <Property Name="InCorralTypeID" Type="Int32" Nullable="false" />
+          <Property Name="InCorralTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OperatingSystem">
+          <Key>
+            <PropertyRef Name="operatingSystemID" />
+          </Key>
+          <Property Name="operatingSystemID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_ExecutionList_new_OperatingSystem" FromRole="OperatingSystem" ToRole="ExecutionList_new" />
+        </EntityType>
+        <EntityType Name="OperatingSystemVersion">
+          <Key>
+            <PropertyRef Name="osVersionID" />
+          </Key>
+          <Property Name="osVersionID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="PlannedDispositionType">
+          <Key>
+            <PropertyRef Name="PlannedDispositionTypeID" />
+          </Key>
+          <Property Name="PlannedDispositionTypeID" Type="Int32" Nullable="false" />
+          <Property Name="PlannedDispositionTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Platform">
+          <Key>
+            <PropertyRef Name="platformID" />
+          </Key>
+          <Property Name="platformID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PlatformsType">
+          <Key>
+            <PropertyRef Name="PlatformsID" />
+          </Key>
+          <Property Name="PlatformsID" Type="Int32" Nullable="false" />
+          <Property Name="PlatformsName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Resource">
+          <Key>
+            <PropertyRef Name="ResourceID" />
+          </Key>
+          <Property Name="ResourceID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_ExecutionList_new_Resources" FromRole="Resources" ToRole="ExecutionList_new" />
+        </EntityType>
+        <EntityType Name="ScreamTestType">
+          <Key>
+            <PropertyRef Name="ScreamTestID" />
+          </Key>
+          <Property Name="ScreamTestID" Type="Int32" Nullable="false" />
+          <Property Name="ScreamTestName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServerInCorral">
+          <Key>
+            <PropertyRef Name="serverInCorral_ID" />
+          </Key>
+          <Property Name="serverInCorral_ID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_ExecutionList_new_ServerInCorral" FromRole="ServerInCorral" ToRole="ExecutionList_new" />
+        </EntityType>
+        <EntityType Name="ServersInCorralType">
+          <Key>
+            <PropertyRef Name="CorralTypeID" />
+          </Key>
+          <Property Name="CorralTypeID" Type="Int32" Nullable="false" />
+          <Property Name="CorralTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="siteID" />
+          </Key>
+          <Property Name="siteID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_ExecutionList_new_Site" FromRole="Site" ToRole="ExecutionList_new" />
+        </EntityType>
+        <EntityType Name="StatusesType">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="StatusTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusHistory">
+          <Key>
+            <PropertyRef Name="statusHistoryID" />
+          </Key>
+          <Property Name="statusHistoryID" Type="Int32" Nullable="false" />
+          <Property Name="statusID" Type="Int32" Nullable="false" />
+          <Property Name="lcmID" Type="Int32" Nullable="false" />
+          <Property Name="startDate" Type="DateTime" Precision="3" />
+          <Property Name="endDate" Type="DateTime" Precision="3" />
+          <Property Name="dueDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_StatusHistory_ExecutionList_new" FromRole="StatusHistory" ToRole="ExecutionList_new" />
+          <NavigationProperty Name="StatusHistoryArchive" Relationship="Self.FK_StatusHistoryArchive_StatusHistory" FromRole="StatusHistory" ToRole="StatusHistoryArchive" />
+        </EntityType>
+        <EntityType Name="StatusHistoryArchive">
+          <Key>
+            <PropertyRef Name="statusHistoryID" />
+          </Key>
+          <Property Name="statusHistoryID" Type="Int32" Nullable="false" />
+          <Property Name="statusID" Type="Int32" Nullable="false" />
+          <Property Name="lcmID" Type="Int32" Nullable="false" />
+          <Property Name="startDate" Type="DateTime" Precision="3" />
+          <Property Name="endDate" Type="DateTime" Precision="3" />
+          <Property Name="dueDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="StatusHistory" Relationship="Self.FK_StatusHistoryArchive_StatusHistory" FromRole="StatusHistoryArchive" ToRole="StatusHistory" />
+        </EntityType>
+        <EntityType Name="StatusType">
+          <Key>
+            <PropertyRef Name="statusID" />
+          </Key>
+          <Property Name="statusID" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="modifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_ExecutionList_new_StatusType" FromRole="StatusType" ToRole="ExecutionList_new" />
+        </EntityType>
+        <EntityType Name="SupportGroupCmdb">
+          <Key>
+            <PropertyRef Name="supportGroupID" />
+          </Key>
+          <Property Name="supportGroupID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_ExecutionList_new_SupportGroupCmdb" FromRole="SupportGroupCmdb" ToRole="ExecutionList_new" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="WorkOrder">
+          <Key>
+            <PropertyRef Name="workOrderID" />
+          </Key>
+          <Property Name="workOrderID" Type="Int32" Nullable="false" />
+          <Property Name="lcmID" Type="Int32" Nullable="false" />
+          <Property Name="reasonID" Type="Int32" Nullable="false" />
+          <Property Name="WO_StatusID" Type="Int32" />
+          <Property Name="startDate" Type="DateTime" Precision="3" />
+          <Property Name="endDate" Type="DateTime" Precision="3" />
+          <Property Name="dueDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ExecutionList_new" Relationship="Self.FK_ExecutionList_new_WorkOrder" FromRole="WorkOrder" ToRole="ExecutionList_new" />
+          <NavigationProperty Name="WorkOrderReason" Relationship="Self.FK_WorkOrder_WorkOrderReason" FromRole="WorkOrder" ToRole="WorkOrderReason" />
+          <NavigationProperty Name="WorkOrderStatu" Relationship="Self.FK_WorkOrder_WorkOrderStatus" FromRole="WorkOrder" ToRole="WorkOrderStatus" />
+        </EntityType>
+        <EntityType Name="WorkOrderReason">
+          <Key>
+            <PropertyRef Name="reasonID" />
+          </Key>
+          <Property Name="reasonID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="WorkOrders" Relationship="Self.FK_WorkOrder_WorkOrderReason" FromRole="WorkOrderReason" ToRole="WorkOrder" />
+        </EntityType>
+        <EntityType Name="WorkOrderStatu">
+          <Key>
+            <PropertyRef Name="WO_StatusID" />
+          </Key>
+          <Property Name="WO_StatusID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="WorkOrders" Relationship="Self.FK_WorkOrder_WorkOrderStatus" FromRole="WorkOrderStatus" ToRole="WorkOrder" />
+        </EntityType>
+        <EntityType Name="dbo_ExecutionList_CT">
+          <Key>
+            <PropertyRef Name="C___start_lsn" />
+            <PropertyRef Name="C___seqval" />
+            <PropertyRef Name="C___operation" />
+          </Key>
+          <Property Name="C___start_lsn" Type="Binary" MaxLength="10" FixedLength="true" Nullable="false" />
+          <Property Name="C___end_lsn" Type="Binary" MaxLength="10" FixedLength="true" />
+          <Property Name="C___seqval" Type="Binary" MaxLength="10" FixedLength="true" Nullable="false" />
+          <Property Name="C___operation" Type="Int32" Nullable="false" />
+          <Property Name="C___update_mask" Type="Binary" MaxLength="128" FixedLength="false" />
+          <Property Name="lcmID" Type="Int32" />
+          <Property Name="currentServerName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="cmo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="newServerName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="fmo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status27Date" Type="DateTime" Precision="0" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="waveNum" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="grouping" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CRQ_CHG_WO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CRQ_CHG_WOStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HandoverDate" Type="DateTime" Precision="0" />
+          <Property Name="region" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="site" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="siteComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="appName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="appOwner" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="monsantoPM" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="atosPM" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="escalationNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="personContacted" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="contactedDate" Type="DateTime" Precision="0" />
+          <Property Name="serialNum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="pmNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="environment" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="supportGroupCmdb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="operatingSystem" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="skyfall" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="skyfallNum" Type="Int32" />
+          <Property Name="skyfallIndex" Type="Decimal" Precision="8" Scale="6" />
+          <Property Name="atosTeamID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="decomType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="decomStartDate" Type="DateTime" Precision="0" />
+          <Property Name="retirementCrq" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="retirementChg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="retirementWo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="decomData" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="forecastedStatusDate" Type="DateTime" Precision="0" />
+          <Property Name="cabApprovalDate" Type="DateTime" Precision="0" />
+          <Property Name="database" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="java" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="middleware" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="citrix" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="lcmWeek" Type="Int32" />
+          <Property Name="platforms" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="complianceAssetID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="screamTest" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="serverInCorral" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="corralPlannedDisposition" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AppTeamTurnoverDate" Type="DateTime" Precision="0" />
+          <Property Name="managedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="currentOsVersion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="futureOsVersion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dateEnteredCorral" Type="DateTime" Precision="0" />
+          <Property Name="followupMonth" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="transformation" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="afqOsVersion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="fiscalYear" Type="Int32" />
+          <Property Name="ResourceID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="C___command_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="dbo_ExecutionList_new_CT">
+          <Key>
+            <PropertyRef Name="C___start_lsn" />
+            <PropertyRef Name="C___seqval" />
+            <PropertyRef Name="C___operation" />
+          </Key>
+          <Property Name="C___start_lsn" Type="Binary" MaxLength="10" FixedLength="true" Nullable="false" />
+          <Property Name="C___end_lsn" Type="Binary" MaxLength="10" FixedLength="true" />
+          <Property Name="C___seqval" Type="Binary" MaxLength="10" FixedLength="true" Nullable="false" />
+          <Property Name="C___operation" Type="Int32" Nullable="false" />
+          <Property Name="C___update_mask" Type="Binary" MaxLength="128" FixedLength="false" />
+          <Property Name="lcmID" Type="Int32" />
+          <Property Name="resourceID" Type="Int32" />
+          <Property Name="statusID" Type="Int32" />
+          <Property Name="groupingID" Type="Int32" />
+          <Property Name="workOrderID" Type="Int32" />
+          <Property Name="WO_StatusID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="currentServerName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="cmo" Type="Int32" />
+          <Property Name="newServerName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="fmo" Type="Int32" />
+          <Property Name="status27Date" Type="DateTime" Precision="0" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="waveNum" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="handoverDate" Type="DateTime" Precision="0" />
+          <Property Name="region" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="siteID" Type="Int32" />
+          <Property Name="siteComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="appName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="appOwner" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="monsantoPM" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="atosPM" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="escalationNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="personContacted" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="contactedDate" Type="DateTime" Precision="3" />
+          <Property Name="serialNum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="pmNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="environmentID" Type="Int32" />
+          <Property Name="supportGroupID" Type="Int32" />
+          <Property Name="operatingSystemID" Type="Int32" />
+          <Property Name="skyfall" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="skyfallNum" Type="Int32" />
+          <Property Name="skyfall_index" Type="Decimal" Precision="8" Scale="6" />
+          <Property Name="AtosTeamID" Type="Int32" />
+          <Property Name="decomTypeID" Type="Int32" />
+          <Property Name="decomStartDate" Type="DateTime" Precision="3" />
+          <Property Name="retirementCrq" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="retirementChg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="retirementWo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="j_data_decom_only" Type="Boolean" />
+          <Property Name="forecastedStatusDate" Type="DateTime" Precision="3" />
+          <Property Name="cabApprovalDate" Type="DateTime" Precision="3" />
+          <Property Name="databaseTypeID" Type="Int32" />
+          <Property Name="java" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="middleware" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="citrix" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="lcmWeek" Type="Int32" />
+          <Property Name="platforms" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="complianceAssetID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="screamTeast" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="serverInCorral_ID" Type="Int32" />
+          <Property Name="plannedDispositionID" Type="Int32" />
+          <Property Name="AppTeamTurnoverDate" Type="DateTime" Precision="3" />
+          <Property Name="managedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="currentOsVersion" Type="Int32" />
+          <Property Name="futureOsVersion" Type="Int32" />
+          <Property Name="dateEnteredCorral" Type="DateTime" Precision="3" />
+          <Property Name="followupMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="transformation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="afqOsVersion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="fiscalYear" Type="Int32" />
+          <Property Name="NZEV_Overlap" Type="Boolean" />
+          <Property Name="serverRequiresOsLicense" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NumCores" Type="Int32" />
+          <Property Name="NumProcessors" Type="Int32" />
+          <Property Name="NZEV_Remediation_Planned" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ISO_Exception_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="COG_Supported" Type="Boolean" />
+          <Property Name="countryRegionID" Type="Int32" />
+          <Property Name="C___command_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="systranschema">
+          <Key>
+            <PropertyRef Name="tabid" />
+            <PropertyRef Name="startlsn" />
+            <PropertyRef Name="endlsn" />
+            <PropertyRef Name="typeid" />
+          </Key>
+          <Property Name="tabid" Type="Int32" Nullable="false" />
+          <Property Name="startlsn" Type="Binary" MaxLength="10" FixedLength="true" Nullable="false" />
+          <Property Name="endlsn" Type="Binary" MaxLength="10" FixedLength="true" Nullable="false" />
+          <Property Name="typeid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ExecutionList_new_CorralPlannedDisposition">
+          <End Role="CorralPlannedDisposition" Type="Self.CorralPlannedDisposition" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CorralPlannedDisposition">
+              <PropertyRef Name="plannedDispositionID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="plannedDispositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_CountryRegion">
+          <End Role="CountryRegion" Type="Self.CountryRegion" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryRegion">
+              <PropertyRef Name="countryRegionID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="countryRegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_DatabaseType">
+          <End Role="DatabaseType" Type="Self.DatabaseType" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatabaseType">
+              <PropertyRef Name="databaseTypeID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="databaseTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_DecomType">
+          <End Role="DecomType" Type="Self.DecomType" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DecomType">
+              <PropertyRef Name="decomTypeID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="decomTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="AtosTeamID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="AtosTeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_Environment">
+          <End Role="Environment" Type="Self.Environment" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Environment">
+              <PropertyRef Name="environmentID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="environmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_Grouping">
+          <End Role="Grouping" Type="Self.Grouping" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grouping">
+              <PropertyRef Name="groupingID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="groupingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_OperatingSystem">
+          <End Role="OperatingSystem" Type="Self.OperatingSystem" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperatingSystem">
+              <PropertyRef Name="operatingSystemID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="operatingSystemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_Resources">
+          <End Role="Resources" Type="Self.Resource" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resources">
+              <PropertyRef Name="ResourceID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="resourceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_ServerInCorral">
+          <End Role="ServerInCorral" Type="Self.ServerInCorral" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServerInCorral">
+              <PropertyRef Name="serverInCorral_ID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="serverInCorral_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_Site">
+          <End Role="Site" Type="Self.Site" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="siteID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="siteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_StatusType">
+          <End Role="StatusType" Type="Self.StatusType" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusType">
+              <PropertyRef Name="statusID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="statusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_SupportGroupCmdb">
+          <End Role="SupportGroupCmdb" Type="Self.SupportGroupCmdb" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupportGroupCmdb">
+              <PropertyRef Name="supportGroupID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="supportGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionList_new_WorkOrder">
+          <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="0..1" />
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrder">
+              <PropertyRef Name="workOrderID" />
+            </Principal>
+            <Dependent Role="ExecutionList_new">
+              <PropertyRef Name="workOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusHistory_ExecutionList_new">
+          <End Role="ExecutionList_new" Type="Self.ExecutionList_new" Multiplicity="1" />
+          <End Role="StatusHistory" Type="Self.StatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExecutionList_new">
+              <PropertyRef Name="lcmID" />
+            </Principal>
+            <Dependent Role="StatusHistory">
+              <PropertyRef Name="lcmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusHistoryArchive_StatusHistory">
+          <End Role="StatusHistory" Type="Self.StatusHistory" Multiplicity="1" />
+          <End Role="StatusHistoryArchive" Type="Self.StatusHistoryArchive" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="StatusHistory">
+              <PropertyRef Name="statusHistoryID" />
+            </Principal>
+            <Dependent Role="StatusHistoryArchive">
+              <PropertyRef Name="statusHistoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrder_WorkOrderReason">
+          <End Role="WorkOrderReason" Type="Self.WorkOrderReason" Multiplicity="1" />
+          <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrderReason">
+              <PropertyRef Name="reasonID" />
+            </Principal>
+            <Dependent Role="WorkOrder">
+              <PropertyRef Name="reasonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrder_WorkOrderStatus">
+          <End Role="WorkOrderStatus" Type="Self.WorkOrderStatu" Multiplicity="0..1" />
+          <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrderStatus">
+              <PropertyRef Name="WO_StatusID" />
+            </Principal>
+            <Dependent Role="WorkOrder">
+              <PropertyRef Name="WO_StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LifecycleManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="captured_columns" EntityType="Self.captured_columns" />
+          <EntitySet Name="change_tables" EntityType="Self.change_tables" />
+          <EntitySet Name="ddl_history" EntityType="Self.ddl_history" />
+          <EntitySet Name="index_columns" EntityType="Self.index_columns" />
+          <EntitySet Name="lsn_time_mapping" EntityType="Self.lsn_time_mapping" />
+          <EntitySet Name="AssignedResources" EntityType="Self.AssignedResource" />
+          <EntitySet Name="AtosTeams" EntityType="Self.AtosTeam" />
+          <EntitySet Name="CmoFmoTypes" EntityType="Self.CmoFmoType" />
+          <EntitySet Name="CorralPlannedDispositions" EntityType="Self.CorralPlannedDisposition" />
+          <EntitySet Name="CountryRegions" EntityType="Self.CountryRegion" />
+          <EntitySet Name="CRQ_CHG_WO_StatusType" EntityType="Self.CRQ_CHG_WO_StatusType" />
+          <EntitySet Name="DatabaseTypes" EntityType="Self.DatabaseType" />
+          <EntitySet Name="DecomTypes" EntityType="Self.DecomType" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Environments" EntityType="Self.Environment" />
+          <EntitySet Name="EventLogs" EntityType="Self.EventLog" />
+          <EntitySet Name="EventLogs1" EntityType="Self.EventLog1" />
+          <EntitySet Name="ExecutionLists" EntityType="Self.ExecutionList" />
+          <EntitySet Name="ExecutionList_new" EntityType="Self.ExecutionList_new" />
+          <EntitySet Name="FollowupMonths" EntityType="Self.FollowupMonth" />
+          <EntitySet Name="GoalsTargets" EntityType="Self.GoalsTarget" />
+          <EntitySet Name="Groupings" EntityType="Self.Grouping" />
+          <EntitySet Name="GroupingsTypes" EntityType="Self.GroupingsType" />
+          <EntitySet Name="InCorralTypes" EntityType="Self.InCorralType" />
+          <EntitySet Name="OperatingSystems" EntityType="Self.OperatingSystem" />
+          <EntitySet Name="OperatingSystemVersions" EntityType="Self.OperatingSystemVersion" />
+          <EntitySet Name="PlannedDispositionTypes" EntityType="Self.PlannedDispositionType" />
+          <EntitySet Name="Platforms" EntityType="Self.Platform" />
+          <EntitySet Name="PlatformsTypes" EntityType="Self.PlatformsType" />
+          <EntitySet Name="Resources" EntityType="Self.Resource" />
+          <EntitySet Name="ScreamTestTypes" EntityType="Self.ScreamTestType" />
+          <EntitySet Name="ServerInCorrals" EntityType="Self.ServerInCorral" />
+          <EntitySet Name="ServersInCorralTypes" EntityType="Self.ServersInCorralType" />
+          <EntitySet Name="Sites" EntityType="Self.Site" />
+          <EntitySet Name="StatusesTypes" EntityType="Self.StatusesType" />
+          <EntitySet Name="StatusHistories" EntityType="Self.StatusHistory" />
+          <EntitySet Name="StatusHistoryArchives" EntityType="Self.StatusHistoryArchive" />
+          <EntitySet Name="StatusTypes" EntityType="Self.StatusType" />
+          <EntitySet Name="SupportGroupCmdbs" EntityType="Self.SupportGroupCmdb" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="WorkOrders" EntityType="Self.WorkOrder" />
+          <EntitySet Name="WorkOrderReasons" EntityType="Self.WorkOrderReason" />
+          <EntitySet Name="WorkOrderStatus" EntityType="Self.WorkOrderStatu" />
+          <EntitySet Name="dbo_ExecutionList_CT" EntityType="Self.dbo_ExecutionList_CT" />
+          <EntitySet Name="dbo_ExecutionList_new_CT" EntityType="Self.dbo_ExecutionList_new_CT" />
+          <EntitySet Name="systranschemas" EntityType="Self.systranschema" />
+          <AssociationSet Name="FK_ExecutionList_new_CorralPlannedDisposition" Association="Self.FK_ExecutionList_new_CorralPlannedDisposition">
+            <End Role="CorralPlannedDisposition" EntitySet="CorralPlannedDispositions" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_CountryRegion" Association="Self.FK_ExecutionList_new_CountryRegion">
+            <End Role="CountryRegion" EntitySet="CountryRegions" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_DatabaseType" Association="Self.FK_ExecutionList_new_DatabaseType">
+            <End Role="DatabaseType" EntitySet="DatabaseTypes" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_DecomType" Association="Self.FK_ExecutionList_new_DecomType">
+            <End Role="DecomType" EntitySet="DecomTypes" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_Department" Association="Self.FK_ExecutionList_new_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_Environment" Association="Self.FK_ExecutionList_new_Environment">
+            <End Role="Environment" EntitySet="Environments" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_Grouping" Association="Self.FK_ExecutionList_new_Grouping">
+            <End Role="Grouping" EntitySet="Groupings" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_OperatingSystem" Association="Self.FK_ExecutionList_new_OperatingSystem">
+            <End Role="OperatingSystem" EntitySet="OperatingSystems" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_Resources" Association="Self.FK_ExecutionList_new_Resources">
+            <End Role="Resources" EntitySet="Resources" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_ServerInCorral" Association="Self.FK_ExecutionList_new_ServerInCorral">
+            <End Role="ServerInCorral" EntitySet="ServerInCorrals" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_Site" Association="Self.FK_ExecutionList_new_Site">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_StatusType" Association="Self.FK_ExecutionList_new_StatusType">
+            <End Role="StatusType" EntitySet="StatusTypes" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_SupportGroupCmdb" Association="Self.FK_ExecutionList_new_SupportGroupCmdb">
+            <End Role="SupportGroupCmdb" EntitySet="SupportGroupCmdbs" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionList_new_WorkOrder" Association="Self.FK_ExecutionList_new_WorkOrder">
+            <End Role="WorkOrder" EntitySet="WorkOrders" />
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusHistory_ExecutionList_new" Association="Self.FK_StatusHistory_ExecutionList_new">
+            <End Role="ExecutionList_new" EntitySet="ExecutionList_new" />
+            <End Role="StatusHistory" EntitySet="StatusHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusHistoryArchive_StatusHistory" Association="Self.FK_StatusHistoryArchive_StatusHistory">
+            <End Role="StatusHistory" EntitySet="StatusHistories" />
+            <End Role="StatusHistoryArchive" EntitySet="StatusHistoryArchives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrder_WorkOrderReason" Association="Self.FK_WorkOrder_WorkOrderReason">
+            <End Role="WorkOrderReason" EntitySet="WorkOrderReasons" />
+            <End Role="WorkOrder" EntitySet="WorkOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrder_WorkOrderStatus" Association="Self.FK_WorkOrder_WorkOrderStatus">
+            <End Role="WorkOrderStatus" EntitySet="WorkOrderStatus" />
+            <End Role="WorkOrder" EntitySet="WorkOrders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LifecycleManagementModelStoreContainer" CdmEntityContainer="LifecycleManagementEntities">
+          <EntitySetMapping Name="captured_columns">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.captured_columns">
+              <MappingFragment StoreEntitySet="captured_columns">
+                <ScalarProperty Name="object_id" ColumnName="object_id" />
+                <ScalarProperty Name="column_name" ColumnName="column_name" />
+                <ScalarProperty Name="column_id" ColumnName="column_id" />
+                <ScalarProperty Name="column_type" ColumnName="column_type" />
+                <ScalarProperty Name="column_ordinal" ColumnName="column_ordinal" />
+                <ScalarProperty Name="is_computed" ColumnName="is_computed" />
+                <ScalarProperty Name="masking_function" ColumnName="masking_function" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="change_tables">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.change_tables">
+              <MappingFragment StoreEntitySet="change_tables">
+                <ScalarProperty Name="object_id" ColumnName="object_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="source_object_id" ColumnName="source_object_id" />
+                <ScalarProperty Name="capture_instance" ColumnName="capture_instance" />
+                <ScalarProperty Name="start_lsn" ColumnName="start_lsn" />
+                <ScalarProperty Name="end_lsn" ColumnName="end_lsn" />
+                <ScalarProperty Name="supports_net_changes" ColumnName="supports_net_changes" />
+                <ScalarProperty Name="has_drop_pending" ColumnName="has_drop_pending" />
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+                <ScalarProperty Name="index_name" ColumnName="index_name" />
+                <ScalarProperty Name="filegroup_name" ColumnName="filegroup_name" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="partition_switch" ColumnName="partition_switch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ddl_history">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.ddl_history">
+              <MappingFragment StoreEntitySet="ddl_history">
+                <ScalarProperty Name="source_object_id" ColumnName="source_object_id" />
+                <ScalarProperty Name="object_id" ColumnName="object_id" />
+                <ScalarProperty Name="required_column_update" ColumnName="required_column_update" />
+                <ScalarProperty Name="ddl_command" ColumnName="ddl_command" />
+                <ScalarProperty Name="ddl_lsn" ColumnName="ddl_lsn" />
+                <ScalarProperty Name="ddl_time" ColumnName="ddl_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="index_columns">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.index_columns">
+              <MappingFragment StoreEntitySet="index_columns">
+                <ScalarProperty Name="object_id" ColumnName="object_id" />
+                <ScalarProperty Name="column_name" ColumnName="column_name" />
+                <ScalarProperty Name="index_ordinal" ColumnName="index_ordinal" />
+                <ScalarProperty Name="column_id" ColumnName="column_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lsn_time_mapping">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.lsn_time_mapping">
+              <MappingFragment StoreEntitySet="lsn_time_mapping">
+                <ScalarProperty Name="start_lsn" ColumnName="start_lsn" />
+                <ScalarProperty Name="tran_begin_time" ColumnName="tran_begin_time" />
+                <ScalarProperty Name="tran_end_time" ColumnName="tran_end_time" />
+                <ScalarProperty Name="tran_id" ColumnName="tran_id" />
+                <ScalarProperty Name="tran_begin_lsn" ColumnName="tran_begin_lsn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssignedResources">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.AssignedResource">
+              <MappingFragment StoreEntitySet="AssignedResource">
+                <ScalarProperty Name="AssignedResourceID" ColumnName="AssignedResourceID" />
+                <ScalarProperty Name="AssignedResourceName" ColumnName="AssignedResourceName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AtosTeams">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.AtosTeam">
+              <MappingFragment StoreEntitySet="AtosTeam">
+                <ScalarProperty Name="AtosTeamID" ColumnName="AtosTeamID" />
+                <ScalarProperty Name="AtosTeamName" ColumnName="AtosTeamName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CmoFmoTypes">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.CmoFmoType">
+              <MappingFragment StoreEntitySet="CmoFmoType">
+                <ScalarProperty Name="CmoFmoID" ColumnName="CmoFmoID" />
+                <ScalarProperty Name="CmoFmoName" ColumnName="CmoFmoName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CorralPlannedDispositions">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.CorralPlannedDisposition">
+              <MappingFragment StoreEntitySet="CorralPlannedDisposition">
+                <ScalarProperty Name="plannedDispositionID" ColumnName="plannedDispositionID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryRegions">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.CountryRegion">
+              <MappingFragment StoreEntitySet="CountryRegion">
+                <ScalarProperty Name="countryRegionID" ColumnName="countryRegionID" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CRQ_CHG_WO_StatusType">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.CRQ_CHG_WO_StatusType">
+              <MappingFragment StoreEntitySet="CRQ_CHG_WO_StatusType">
+                <ScalarProperty Name="CRQ_CHG_WO_TypeID" ColumnName="CRQ_CHG_WO_TypeID" />
+                <ScalarProperty Name="CRQ_CHG_WO_TypeName" ColumnName="CRQ_CHG_WO_TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatabaseTypes">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.DatabaseType">
+              <MappingFragment StoreEntitySet="DatabaseType">
+                <ScalarProperty Name="databaseTypeID" ColumnName="databaseTypeID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DecomTypes">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.DecomType">
+              <MappingFragment StoreEntitySet="DecomType">
+                <ScalarProperty Name="decomTypeID" ColumnName="decomTypeID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="AtosTeamID" ColumnName="AtosTeamID" />
+                <ScalarProperty Name="Department1" ColumnName="Department" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Environments">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.Environment">
+              <MappingFragment StoreEntitySet="Environment">
+                <ScalarProperty Name="environmentID" ColumnName="environmentID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventLogs">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.EventLog">
+              <MappingFragment StoreEntitySet="EventLog">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="ServerID" ColumnName="ServerID" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="LifecycleStatusID" ColumnName="LifecycleStatusID" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="InitiatedBy" ColumnName="InitiatedBy" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventLogs1">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.EventLog1">
+              <MappingFragment StoreEntitySet="EventLogs">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="ServerID" ColumnName="ServerID" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="LifecycleStatusID" ColumnName="LifecycleStatusID" />
+                <ScalarProperty Name="TimeStamped" ColumnName="TimeStamped" />
+                <ScalarProperty Name="InitiatedBy" ColumnName="InitiatedBy" />
+                <ScalarProperty Name="Date_Time" ColumnName="Date_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExecutionLists">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.ExecutionList">
+              <MappingFragment StoreEntitySet="ExecutionList">
+                <ScalarProperty Name="lcmID" ColumnName="lcmID" />
+                <ScalarProperty Name="currentServerName" ColumnName="currentServerName" />
+                <ScalarProperty Name="cmo" ColumnName="cmo" />
+                <ScalarProperty Name="newServerName" ColumnName="newServerName" />
+                <ScalarProperty Name="fmo" ColumnName="fmo" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="status27Date" ColumnName="status27Date" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="waveNum" ColumnName="waveNum" />
+                <ScalarProperty Name="grouping" ColumnName="grouping" />
+                <ScalarProperty Name="CRQ_CHG_WO" ColumnName="CRQ_CHG_WO" />
+                <ScalarProperty Name="CRQ_CHG_WOStatus" ColumnName="CRQ_CHG_WOStatus" />
+                <ScalarProperty Name="HandoverDate" ColumnName="HandoverDate" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="siteComments" ColumnName="siteComments" />
+                <ScalarProperty Name="appName" ColumnName="appName" />
+                <ScalarProperty Name="appOwner" ColumnName="appOwner" />
+                <ScalarProperty Name="monsantoPM" ColumnName="monsantoPM" />
+                <ScalarProperty Name="atosPM" ColumnName="atosPM" />
+                <ScalarProperty Name="escalationNotes" ColumnName="escalationNotes" />
+                <ScalarProperty Name="personContacted" ColumnName="personContacted" />
+                <ScalarProperty Name="contactedDate" ColumnName="contactedDate" />
+                <ScalarProperty Name="serialNum" ColumnName="serialNum" />
+                <ScalarProperty Name="pmNotes" ColumnName="pmNotes" />
+                <ScalarProperty Name="environment" ColumnName="environment" />
+                <ScalarProperty Name="supportGroupCmdb" ColumnName="supportGroupCmdb" />
+                <ScalarProperty Name="operatingSystem" ColumnName="operatingSystem" />
+                <ScalarProperty Name="skyfall" ColumnName="skyfall" />
+                <ScalarProperty Name="skyfallNum" ColumnName="skyfallNum" />
+                <ScalarProperty Name="skyfallIndex" ColumnName="skyfallIndex" />
+                <ScalarProperty Name="atosTeamID" ColumnName="atosTeamID" />
+                <ScalarProperty Name="decomType" ColumnName="decomType" />
+                <ScalarProperty Name="decomStartDate" ColumnName="decomStartDate" />
+                <ScalarProperty Name="retirementCrq" ColumnName="retirementCrq" />
+                <ScalarProperty Name="retirementChg" ColumnName="retirementChg" />
+                <ScalarProperty Name="retirementWo" ColumnName="retirementWo" />
+                <ScalarProperty Name="decomData" ColumnName="decomData" />
+                <ScalarProperty Name="forecastedStatusDate" ColumnName="forecastedStatusDate" />
+                <ScalarProperty Name="cabApprovalDate" ColumnName="cabApprovalDate" />
+                <ScalarProperty Name="database" ColumnName="database" />
+                <ScalarProperty Name="java" ColumnName="java" />
+                <ScalarProperty Name="middleware" ColumnName="middleware" />
+                <ScalarProperty Name="citrix" ColumnName="citrix" />
+                <ScalarProperty Name="lcmWeek" ColumnName="lcmWeek" />
+                <ScalarProperty Name="platforms" ColumnName="platforms" />
+                <ScalarProperty Name="complianceAssetID" ColumnName="complianceAssetID" />
+                <ScalarProperty Name="screamTest" ColumnName="screamTest" />
+                <ScalarProperty Name="serverInCorral" ColumnName="serverInCorral" />
+                <ScalarProperty Name="corralPlannedDisposition" ColumnName="corralPlannedDisposition" />
+                <ScalarProperty Name="AppTeamTurnoverDate" ColumnName="AppTeamTurnoverDate" />
+                <ScalarProperty Name="managedBy" ColumnName="managedBy" />
+                <ScalarProperty Name="currentOsVersion" ColumnName="currentOsVersion" />
+                <ScalarProperty Name="futureOsVersion" ColumnName="futureOsVersion" />
+                <ScalarProperty Name="dateEnteredCorral" ColumnName="dateEnteredCorral" />
+                <ScalarProperty Name="followupMonth" ColumnName="followupMonth" />
+                <ScalarProperty Name="transformation" ColumnName="transformation" />
+                <ScalarProperty Name="afqOsVersion" ColumnName="afqOsVersion" />
+                <ScalarProperty Name="fiscalYear" ColumnName="fiscalYear" />
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="NZEVOverlap" ColumnName="NZEVOverlap" />
+                <ScalarProperty Name="ServerRequiresOSLicense" ColumnName="ServerRequiresOSLicense" />
+                <ScalarProperty Name="NumCores" ColumnName="NumCores" />
+                <ScalarProperty Name="NumProcessors" ColumnName="NumProcessors" />
+                <ScalarProperty Name="NZEVRemediationPlanned" ColumnName="NZEVRemediationPlanned" />
+                <ScalarProperty Name="ISOExceptionNumber" ColumnName="ISOExceptionNumber" />
+                <ScalarProperty Name="COGSupported" ColumnName="COGSupported" />
+                <ScalarProperty Name="LcmType" ColumnName="LcmType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExecutionList_new">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.ExecutionList_new">
+              <MappingFragment StoreEntitySet="ExecutionList_new">
+                <ScalarProperty Name="lcmID" ColumnName="lcmID" />
+                <ScalarProperty Name="resourceID" ColumnName="resourceID" />
+                <ScalarProperty Name="statusID" ColumnName="statusID" />
+                <ScalarProperty Name="groupingID" ColumnName="groupingID" />
+                <ScalarProperty Name="workOrderID" ColumnName="workOrderID" />
+                <ScalarProperty Name="WO_StatusID" ColumnName="WO_StatusID" />
+                <ScalarProperty Name="currentServerName" ColumnName="currentServerName" />
+                <ScalarProperty Name="cmo" ColumnName="cmo" />
+                <ScalarProperty Name="newServerName" ColumnName="newServerName" />
+                <ScalarProperty Name="fmo" ColumnName="fmo" />
+                <ScalarProperty Name="status27Date" ColumnName="status27Date" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="waveNum" ColumnName="waveNum" />
+                <ScalarProperty Name="handoverDate" ColumnName="handoverDate" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="siteID" ColumnName="siteID" />
+                <ScalarProperty Name="siteComments" ColumnName="siteComments" />
+                <ScalarProperty Name="appName" ColumnName="appName" />
+                <ScalarProperty Name="appOwner" ColumnName="appOwner" />
+                <ScalarProperty Name="monsantoPM" ColumnName="monsantoPM" />
+                <ScalarProperty Name="atosPM" ColumnName="atosPM" />
+                <ScalarProperty Name="escalationNotes" ColumnName="escalationNotes" />
+                <ScalarProperty Name="personContacted" ColumnName="personContacted" />
+                <ScalarProperty Name="contactedDate" ColumnName="contactedDate" />
+                <ScalarProperty Name="serialNum" ColumnName="serialNum" />
+                <ScalarProperty Name="pmNotes" ColumnName="pmNotes" />
+                <ScalarProperty Name="environmentID" ColumnName="environmentID" />
+                <ScalarProperty Name="supportGroupID" ColumnName="supportGroupID" />
+                <ScalarProperty Name="operatingSystemID" ColumnName="operatingSystemID" />
+                <ScalarProperty Name="skyfall" ColumnName="skyfall" />
+                <ScalarProperty Name="skyfallNum" ColumnName="skyfallNum" />
+                <ScalarProperty Name="skyfall_index" ColumnName="skyfall_index" />
+                <ScalarProperty Name="AtosTeamID" ColumnName="AtosTeamID" />
+                <ScalarProperty Name="decomTypeID" ColumnName="decomTypeID" />
+                <ScalarProperty Name="decomStartDate" ColumnName="decomStartDate" />
+                <ScalarProperty Name="retirementCrq" ColumnName="retirementCrq" />
+                <ScalarProperty Name="retirementChg" ColumnName="retirementChg" />
+                <ScalarProperty Name="retirementWo" ColumnName="retirementWo" />
+                <ScalarProperty Name="j_data_decom_only" ColumnName="j_data_decom_only" />
+                <ScalarProperty Name="forecastedStatusDate" ColumnName="forecastedStatusDate" />
+                <ScalarProperty Name="cabApprovalDate" ColumnName="cabApprovalDate" />
+                <ScalarProperty Name="databaseTypeID" ColumnName="databaseTypeID" />
+                <ScalarProperty Name="java" ColumnName="java" />
+                <ScalarProperty Name="middleware" ColumnName="middleware" />
+                <ScalarProperty Name="citrix" ColumnName="citrix" />
+                <ScalarProperty Name="lcmWeek" ColumnName="lcmWeek" />
+                <ScalarProperty Name="platforms" ColumnName="platforms" />
+                <ScalarProperty Name="complianceAssetID" ColumnName="complianceAssetID" />
+                <ScalarProperty Name="screamTeast" ColumnName="screamTeast" />
+                <ScalarProperty Name="serverInCorral_ID" ColumnName="serverInCorral_ID" />
+                <ScalarProperty Name="plannedDispositionID" ColumnName="plannedDispositionID" />
+                <ScalarProperty Name="AppTeamTurnoverDate" ColumnName="AppTeamTurnoverDate" />
+                <ScalarProperty Name="managedBy" ColumnName="managedBy" />
+                <ScalarProperty Name="currentOsVersion" ColumnName="currentOsVersion" />
+                <ScalarProperty Name="futureOsVersion" ColumnName="futureOsVersion" />
+                <ScalarProperty Name="dateEnteredCorral" ColumnName="dateEnteredCorral" />
+                <ScalarProperty Name="followupMonth" ColumnName="followupMonth" />
+                <ScalarProperty Name="transformation" ColumnName="transformation" />
+                <ScalarProperty Name="afqOsVersion" ColumnName="afqOsVersion" />
+                <ScalarProperty Name="fiscalYear" ColumnName="fiscalYear" />
+                <ScalarProperty Name="NZEV_Overlap" ColumnName="NZEV_Overlap" />
+                <ScalarProperty Name="serverRequiresOsLicense" ColumnName="serverRequiresOsLicense" />
+                <ScalarProperty Name="NumCores" ColumnName="NumCores" />
+                <ScalarProperty Name="NumProcessors" ColumnName="NumProcessors" />
+                <ScalarProperty Name="NZEV_Remediation_Planned" ColumnName="NZEV_Remediation_Planned" />
+                <ScalarProperty Name="ISO_Exception_Number" ColumnName="ISO_Exception_Number" />
+                <ScalarProperty Name="COG_Supported" ColumnName="COG_Supported" />
+                <ScalarProperty Name="countryRegionID" ColumnName="countryRegionID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FollowupMonths">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.FollowupMonth">
+              <MappingFragment StoreEntitySet="FollowupMonth">
+                <ScalarProperty Name="FollowupMonthID" ColumnName="FollowupMonthID" />
+                <ScalarProperty Name="FollowupMonthName" ColumnName="FollowupMonthName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoalsTargets">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.GoalsTarget">
+              <MappingFragment StoreEntitySet="GoalsTargets">
+                <ScalarProperty Name="GoalsTargetsID" ColumnName="GoalsTargetsID" />
+                <ScalarProperty Name="GoalsTargetsName" ColumnName="GoalsTargetsName" />
+                <ScalarProperty Name="GoalsTargetsNum" ColumnName="GoalsTargetsNum" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groupings">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.Grouping">
+              <MappingFragment StoreEntitySet="Grouping">
+                <ScalarProperty Name="groupingID" ColumnName="groupingID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupingsTypes">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.GroupingsType">
+              <MappingFragment StoreEntitySet="GroupingsType">
+                <ScalarProperty Name="GroupingsID" ColumnName="GroupingsID" />
+                <ScalarProperty Name="GroupingsName" ColumnName="GroupingsName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InCorralTypes">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.InCorralType">
+              <MappingFragment StoreEntitySet="InCorralType">
+                <ScalarProperty Name="InCorralTypeID" ColumnName="InCorralTypeID" />
+                <ScalarProperty Name="InCorralTypeName" ColumnName="InCorralTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperatingSystems">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.OperatingSystem">
+              <MappingFragment StoreEntitySet="OperatingSystem">
+                <ScalarProperty Name="operatingSystemID" ColumnName="operatingSystemID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperatingSystemVersions">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.OperatingSystemVersion">
+              <MappingFragment StoreEntitySet="OperatingSystemVersion">
+                <ScalarProperty Name="osVersionID" ColumnName="osVersionID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlannedDispositionTypes">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.PlannedDispositionType">
+              <MappingFragment StoreEntitySet="PlannedDispositionType">
+                <ScalarProperty Name="PlannedDispositionTypeID" ColumnName="PlannedDispositionTypeID" />
+                <ScalarProperty Name="PlannedDispositionTypeName" ColumnName="PlannedDispositionTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Platforms">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.Platform">
+              <MappingFragment StoreEntitySet="Platform">
+                <ScalarProperty Name="platformID" ColumnName="platformID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlatformsTypes">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.PlatformsType">
+              <MappingFragment StoreEntitySet="PlatformsType">
+                <ScalarProperty Name="PlatformsID" ColumnName="PlatformsID" />
+                <ScalarProperty Name="PlatformsName" ColumnName="PlatformsName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resources">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.Resource">
+              <MappingFragment StoreEntitySet="Resources">
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScreamTestTypes">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.ScreamTestType">
+              <MappingFragment StoreEntitySet="ScreamTestType">
+                <ScalarProperty Name="ScreamTestID" ColumnName="ScreamTestID" />
+                <ScalarProperty Name="ScreamTestName" ColumnName="ScreamTestName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServerInCorrals">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.ServerInCorral">
+              <MappingFragment StoreEntitySet="ServerInCorral">
+                <ScalarProperty Name="serverInCorral_ID" ColumnName="serverInCorral_ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServersInCorralTypes">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.ServersInCorralType">
+              <MappingFragment StoreEntitySet="ServersInCorralType">
+                <ScalarProperty Name="CorralTypeID" ColumnName="CorralTypeID" />
+                <ScalarProperty Name="CorralTypeName" ColumnName="CorralTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sites">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.Site">
+              <MappingFragment StoreEntitySet="Site">
+                <ScalarProperty Name="siteID" ColumnName="siteID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusesTypes">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.StatusesType">
+              <MappingFragment StoreEntitySet="StatusesType">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="StatusTypeName" ColumnName="StatusTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusHistories">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.StatusHistory">
+              <MappingFragment StoreEntitySet="StatusHistory">
+                <ScalarProperty Name="statusHistoryID" ColumnName="statusHistoryID" />
+                <ScalarProperty Name="statusID" ColumnName="statusID" />
+                <ScalarProperty Name="lcmID" ColumnName="lcmID" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusHistoryArchives">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.StatusHistoryArchive">
+              <MappingFragment StoreEntitySet="StatusHistoryArchive">
+                <ScalarProperty Name="statusHistoryID" ColumnName="statusHistoryID" />
+                <ScalarProperty Name="statusID" ColumnName="statusID" />
+                <ScalarProperty Name="lcmID" ColumnName="lcmID" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusTypes">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.StatusType">
+              <MappingFragment StoreEntitySet="StatusType">
+                <ScalarProperty Name="statusID" ColumnName="statusID" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupportGroupCmdbs">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.SupportGroupCmdb">
+              <MappingFragment StoreEntitySet="SupportGroupCmdb">
+                <ScalarProperty Name="supportGroupID" ColumnName="supportGroupID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkOrders">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.WorkOrder">
+              <MappingFragment StoreEntitySet="WorkOrder">
+                <ScalarProperty Name="workOrderID" ColumnName="workOrderID" />
+                <ScalarProperty Name="lcmID" ColumnName="lcmID" />
+                <ScalarProperty Name="reasonID" ColumnName="reasonID" />
+                <ScalarProperty Name="WO_StatusID" ColumnName="WO_StatusID" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkOrderReasons">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.WorkOrderReason">
+              <MappingFragment StoreEntitySet="WorkOrderReason">
+                <ScalarProperty Name="reasonID" ColumnName="reasonID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkOrderStatus">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.WorkOrderStatu">
+              <MappingFragment StoreEntitySet="WorkOrderStatus">
+                <ScalarProperty Name="WO_StatusID" ColumnName="WO_StatusID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbo_ExecutionList_CT">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.dbo_ExecutionList_CT">
+              <MappingFragment StoreEntitySet="dbo_ExecutionList_CT">
+                <ScalarProperty Name="C___start_lsn" ColumnName="__$start_lsn" />
+                <ScalarProperty Name="C___end_lsn" ColumnName="__$end_lsn" />
+                <ScalarProperty Name="C___seqval" ColumnName="__$seqval" />
+                <ScalarProperty Name="C___operation" ColumnName="__$operation" />
+                <ScalarProperty Name="C___update_mask" ColumnName="__$update_mask" />
+                <ScalarProperty Name="lcmID" ColumnName="lcmID" />
+                <ScalarProperty Name="currentServerName" ColumnName="currentServerName" />
+                <ScalarProperty Name="cmo" ColumnName="cmo" />
+                <ScalarProperty Name="newServerName" ColumnName="newServerName" />
+                <ScalarProperty Name="fmo" ColumnName="fmo" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="status27Date" ColumnName="status27Date" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="waveNum" ColumnName="waveNum" />
+                <ScalarProperty Name="grouping" ColumnName="grouping" />
+                <ScalarProperty Name="CRQ_CHG_WO" ColumnName="CRQ_CHG_WO" />
+                <ScalarProperty Name="CRQ_CHG_WOStatus" ColumnName="CRQ_CHG_WOStatus" />
+                <ScalarProperty Name="HandoverDate" ColumnName="HandoverDate" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="siteComments" ColumnName="siteComments" />
+                <ScalarProperty Name="appName" ColumnName="appName" />
+                <ScalarProperty Name="appOwner" ColumnName="appOwner" />
+                <ScalarProperty Name="monsantoPM" ColumnName="monsantoPM" />
+                <ScalarProperty Name="atosPM" ColumnName="atosPM" />
+                <ScalarProperty Name="escalationNotes" ColumnName="escalationNotes" />
+                <ScalarProperty Name="personContacted" ColumnName="personContacted" />
+                <ScalarProperty Name="contactedDate" ColumnName="contactedDate" />
+                <ScalarProperty Name="serialNum" ColumnName="serialNum" />
+                <ScalarProperty Name="pmNotes" ColumnName="pmNotes" />
+                <ScalarProperty Name="environment" ColumnName="environment" />
+                <ScalarProperty Name="supportGroupCmdb" ColumnName="supportGroupCmdb" />
+                <ScalarProperty Name="operatingSystem" ColumnName="operatingSystem" />
+                <ScalarProperty Name="skyfall" ColumnName="skyfall" />
+                <ScalarProperty Name="skyfallNum" ColumnName="skyfallNum" />
+                <ScalarProperty Name="skyfallIndex" ColumnName="skyfallIndex" />
+                <ScalarProperty Name="atosTeamID" ColumnName="atosTeamID" />
+                <ScalarProperty Name="decomType" ColumnName="decomType" />
+                <ScalarProperty Name="decomStartDate" ColumnName="decomStartDate" />
+                <ScalarProperty Name="retirementCrq" ColumnName="retirementCrq" />
+                <ScalarProperty Name="retirementChg" ColumnName="retirementChg" />
+                <ScalarProperty Name="retirementWo" ColumnName="retirementWo" />
+                <ScalarProperty Name="decomData" ColumnName="decomData" />
+                <ScalarProperty Name="forecastedStatusDate" ColumnName="forecastedStatusDate" />
+                <ScalarProperty Name="cabApprovalDate" ColumnName="cabApprovalDate" />
+                <ScalarProperty Name="database" ColumnName="database" />
+                <ScalarProperty Name="java" ColumnName="java" />
+                <ScalarProperty Name="middleware" ColumnName="middleware" />
+                <ScalarProperty Name="citrix" ColumnName="citrix" />
+                <ScalarProperty Name="lcmWeek" ColumnName="lcmWeek" />
+                <ScalarProperty Name="platforms" ColumnName="platforms" />
+                <ScalarProperty Name="complianceAssetID" ColumnName="complianceAssetID" />
+                <ScalarProperty Name="screamTest" ColumnName="screamTest" />
+                <ScalarProperty Name="serverInCorral" ColumnName="serverInCorral" />
+                <ScalarProperty Name="corralPlannedDisposition" ColumnName="corralPlannedDisposition" />
+                <ScalarProperty Name="AppTeamTurnoverDate" ColumnName="AppTeamTurnoverDate" />
+                <ScalarProperty Name="managedBy" ColumnName="managedBy" />
+                <ScalarProperty Name="currentOsVersion" ColumnName="currentOsVersion" />
+                <ScalarProperty Name="futureOsVersion" ColumnName="futureOsVersion" />
+                <ScalarProperty Name="dateEnteredCorral" ColumnName="dateEnteredCorral" />
+                <ScalarProperty Name="followupMonth" ColumnName="followupMonth" />
+                <ScalarProperty Name="transformation" ColumnName="transformation" />
+                <ScalarProperty Name="afqOsVersion" ColumnName="afqOsVersion" />
+                <ScalarProperty Name="fiscalYear" ColumnName="fiscalYear" />
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="C___command_id" ColumnName="__$command_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbo_ExecutionList_new_CT">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.dbo_ExecutionList_new_CT">
+              <MappingFragment StoreEntitySet="dbo_ExecutionList_new_CT">
+                <ScalarProperty Name="C___start_lsn" ColumnName="__$start_lsn" />
+                <ScalarProperty Name="C___end_lsn" ColumnName="__$end_lsn" />
+                <ScalarProperty Name="C___seqval" ColumnName="__$seqval" />
+                <ScalarProperty Name="C___operation" ColumnName="__$operation" />
+                <ScalarProperty Name="C___update_mask" ColumnName="__$update_mask" />
+                <ScalarProperty Name="lcmID" ColumnName="lcmID" />
+                <ScalarProperty Name="resourceID" ColumnName="resourceID" />
+                <ScalarProperty Name="statusID" ColumnName="statusID" />
+                <ScalarProperty Name="groupingID" ColumnName="groupingID" />
+                <ScalarProperty Name="workOrderID" ColumnName="workOrderID" />
+                <ScalarProperty Name="WO_StatusID" ColumnName="WO_StatusID" />
+                <ScalarProperty Name="currentServerName" ColumnName="currentServerName" />
+                <ScalarProperty Name="cmo" ColumnName="cmo" />
+                <ScalarProperty Name="newServerName" ColumnName="newServerName" />
+                <ScalarProperty Name="fmo" ColumnName="fmo" />
+                <ScalarProperty Name="status27Date" ColumnName="status27Date" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="waveNum" ColumnName="waveNum" />
+                <ScalarProperty Name="handoverDate" ColumnName="handoverDate" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="siteID" ColumnName="siteID" />
+                <ScalarProperty Name="siteComments" ColumnName="siteComments" />
+                <ScalarProperty Name="appName" ColumnName="appName" />
+                <ScalarProperty Name="appOwner" ColumnName="appOwner" />
+                <ScalarProperty Name="monsantoPM" ColumnName="monsantoPM" />
+                <ScalarProperty Name="atosPM" ColumnName="atosPM" />
+                <ScalarProperty Name="escalationNotes" ColumnName="escalationNotes" />
+                <ScalarProperty Name="personContacted" ColumnName="personContacted" />
+                <ScalarProperty Name="contactedDate" ColumnName="contactedDate" />
+                <ScalarProperty Name="serialNum" ColumnName="serialNum" />
+                <ScalarProperty Name="pmNotes" ColumnName="pmNotes" />
+                <ScalarProperty Name="environmentID" ColumnName="environmentID" />
+                <ScalarProperty Name="supportGroupID" ColumnName="supportGroupID" />
+                <ScalarProperty Name="operatingSystemID" ColumnName="operatingSystemID" />
+                <ScalarProperty Name="skyfall" ColumnName="skyfall" />
+                <ScalarProperty Name="skyfallNum" ColumnName="skyfallNum" />
+                <ScalarProperty Name="skyfall_index" ColumnName="skyfall_index" />
+                <ScalarProperty Name="AtosTeamID" ColumnName="AtosTeamID" />
+                <ScalarProperty Name="decomTypeID" ColumnName="decomTypeID" />
+                <ScalarProperty Name="decomStartDate" ColumnName="decomStartDate" />
+                <ScalarProperty Name="retirementCrq" ColumnName="retirementCrq" />
+                <ScalarProperty Name="retirementChg" ColumnName="retirementChg" />
+                <ScalarProperty Name="retirementWo" ColumnName="retirementWo" />
+                <ScalarProperty Name="j_data_decom_only" ColumnName="j_data_decom_only" />
+                <ScalarProperty Name="forecastedStatusDate" ColumnName="forecastedStatusDate" />
+                <ScalarProperty Name="cabApprovalDate" ColumnName="cabApprovalDate" />
+                <ScalarProperty Name="databaseTypeID" ColumnName="databaseTypeID" />
+                <ScalarProperty Name="java" ColumnName="java" />
+                <ScalarProperty Name="middleware" ColumnName="middleware" />
+                <ScalarProperty Name="citrix" ColumnName="citrix" />
+                <ScalarProperty Name="lcmWeek" ColumnName="lcmWeek" />
+                <ScalarProperty Name="platforms" ColumnName="platforms" />
+                <ScalarProperty Name="complianceAssetID" ColumnName="complianceAssetID" />
+                <ScalarProperty Name="screamTeast" ColumnName="screamTeast" />
+                <ScalarProperty Name="serverInCorral_ID" ColumnName="serverInCorral_ID" />
+                <ScalarProperty Name="plannedDispositionID" ColumnName="plannedDispositionID" />
+                <ScalarProperty Name="AppTeamTurnoverDate" ColumnName="AppTeamTurnoverDate" />
+                <ScalarProperty Name="managedBy" ColumnName="managedBy" />
+                <ScalarProperty Name="currentOsVersion" ColumnName="currentOsVersion" />
+                <ScalarProperty Name="futureOsVersion" ColumnName="futureOsVersion" />
+                <ScalarProperty Name="dateEnteredCorral" ColumnName="dateEnteredCorral" />
+                <ScalarProperty Name="followupMonth" ColumnName="followupMonth" />
+                <ScalarProperty Name="transformation" ColumnName="transformation" />
+                <ScalarProperty Name="afqOsVersion" ColumnName="afqOsVersion" />
+                <ScalarProperty Name="fiscalYear" ColumnName="fiscalYear" />
+                <ScalarProperty Name="NZEV_Overlap" ColumnName="NZEV_Overlap" />
+                <ScalarProperty Name="serverRequiresOsLicense" ColumnName="serverRequiresOsLicense" />
+                <ScalarProperty Name="NumCores" ColumnName="NumCores" />
+                <ScalarProperty Name="NumProcessors" ColumnName="NumProcessors" />
+                <ScalarProperty Name="NZEV_Remediation_Planned" ColumnName="NZEV_Remediation_Planned" />
+                <ScalarProperty Name="ISO_Exception_Number" ColumnName="ISO_Exception_Number" />
+                <ScalarProperty Name="COG_Supported" ColumnName="COG_Supported" />
+                <ScalarProperty Name="countryRegionID" ColumnName="countryRegionID" />
+                <ScalarProperty Name="C___command_id" ColumnName="__$command_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="systranschemas">
+            <EntityTypeMapping TypeName="LifecycleManagementModel.systranschema">
+              <MappingFragment StoreEntitySet="systranschemas">
+                <ScalarProperty Name="tabid" ColumnName="tabid" />
+                <ScalarProperty Name="startlsn" ColumnName="startlsn" />
+                <ScalarProperty Name="endlsn" ColumnName="endlsn" />
+                <ScalarProperty Name="typeid" ColumnName="typeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

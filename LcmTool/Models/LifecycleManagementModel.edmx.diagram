@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b43139145752458599844fe0148adfac" Name="Diagram1">
+        <EntityTypeShape EntityType="LifecycleManagementModel.captured_columns" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.change_tables" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.ddl_history" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.index_columns" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.lsn_time_mapping" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.AssignedResource" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.AtosTeam" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.CmoFmoType" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.CorralPlannedDisposition" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.CountryRegion" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.CRQ_CHG_WO_StatusType" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.DatabaseType" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.DecomType" Width="1.5" PointX="3" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.Department" Width="1.5" PointX="3" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.Environment" Width="1.5" PointX="3" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.EventLog" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.EventLog1" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.ExecutionList" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.ExecutionList_new" Width="2" PointX="5.125" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.FollowupMonth" Width="1.5" PointX="9.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.GoalsTarget" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.Grouping" Width="1.5" PointX="3" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.GroupingsType" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.InCorralType" Width="1.5" PointX="15.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.OperatingSystem" Width="1.5" PointX="3" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.OperatingSystemVersion" Width="1.5" PointX="15.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.PlannedDispositionType" Width="1.5" PointX="15.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.Platform" Width="1.5" PointX="15.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.PlatformsType" Width="1.5" PointX="7.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.Resource" Width="1.5" PointX="3" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.ScreamTestType" Width="1.5" PointX="9.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.ServerInCorral" Width="1.5" PointX="3" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.ServersInCorralType" Width="1.5" PointX="11.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.Site" Width="1.5" PointX="3" PointY="39.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.StatusesType" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.StatusHistory" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.StatusHistoryArchive" Width="1.5" PointX="9.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.StatusType" Width="1.5" PointX="3" PointY="42.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.SupportGroupCmdb" Width="1.5" PointX="3" PointY="44.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.sysdiagram" Width="1.5" PointX="17.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.WorkOrder" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.WorkOrderReason" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.WorkOrderStatu" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.dbo_ExecutionList_CT" Width="1.5" PointX="17.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.dbo_ExecutionList_new_CT" Width="1.5" PointX="13.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifecycleManagementModel.systranschema" Width="1.5" PointX="19.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_ExecutionList_new_CorralPlannedDisposition" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_ExecutionList_new_CountryRegion" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_ExecutionList_new_DatabaseType" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_ExecutionList_new_DecomType" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_ExecutionList_new_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_ExecutionList_new_Environment" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_ExecutionList_new_Grouping" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_ExecutionList_new_OperatingSystem" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_ExecutionList_new_Resources" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_ExecutionList_new_ServerInCorral" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_ExecutionList_new_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_ExecutionList_new_StatusType" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_ExecutionList_new_SupportGroupCmdb" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_ExecutionList_new_WorkOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_StatusHistory_ExecutionList_new" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_StatusHistoryArchive_StatusHistory" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_WorkOrder_WorkOrderReason" ManuallyRouted="false" />
+        <AssociationConnector Association="LifecycleManagementModel.FK_WorkOrder_WorkOrderStatus" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
