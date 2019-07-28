@@ -1,0 +1,150 @@
+﻿
+@(Html.Kendo().Grid<LcmTool.Models.ExecutionList_new>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.WO_StatusID);
+        columns.Bound(c => c.currentServerName);
+        columns.Bound(c => c.cmo);
+        columns.Bound(c => c.newServerName);
+        columns.Bound(c => c.fmo);
+        columns.Bound(c => c.status27Date);
+        columns.Bound(c => c.notes);
+        columns.Bound(c => c.waveNum);
+        columns.Bound(c => c.handoverDate);
+        columns.Bound(c => c.region);
+        columns.Bound(c => c.country);
+        columns.Bound(c => c.siteComments);
+        columns.Bound(c => c.appName);
+        columns.Bound(c => c.appOwner);
+        columns.Bound(c => c.monsantoPM);
+        columns.Bound(c => c.atosPM);
+        columns.Bound(c => c.escalationNotes);
+        columns.Bound(c => c.personContacted);
+        columns.Bound(c => c.contactedDate);
+        columns.Bound(c => c.serialNum);
+        columns.Bound(c => c.pmNotes);
+        columns.Bound(c => c.skyfall);
+        columns.Bound(c => c.skyfallNum);
+        columns.Bound(c => c.skyfall_index);
+        columns.Bound(c => c.decomStartDate);
+        columns.Bound(c => c.retirementCrq);
+        columns.Bound(c => c.retirementChg);
+        columns.Bound(c => c.retirementWo);
+        columns.Bound(c => c.j_data_decom_only);
+        columns.Bound(c => c.forecastedStatusDate);
+        columns.Bound(c => c.cabApprovalDate);
+        columns.Bound(c => c.java);
+        columns.Bound(c => c.middleware);
+        columns.Bound(c => c.citrix);
+        columns.Bound(c => c.lcmWeek);
+        columns.Bound(c => c.platforms);
+        columns.Bound(c => c.complianceAssetID);
+        columns.Bound(c => c.screamTeast);
+        columns.Bound(c => c.AppTeamTurnoverDate);
+        columns.Bound(c => c.managedBy);
+        columns.Bound(c => c.currentOsVersion);
+        columns.Bound(c => c.futureOsVersion);
+        columns.Bound(c => c.dateEnteredCorral);
+        columns.Bound(c => c.followupMonth);
+        columns.Bound(c => c.transformation);
+        columns.Bound(c => c.afqOsVersion);
+        columns.Bound(c => c.fiscalYear);
+        columns.Bound(c => c.NZEV_Overlap);
+        columns.Bound(c => c.serverRequiresOsLicense);
+        columns.Bound(c => c.NumCores);
+        columns.Bound(c => c.NumProcessors);
+        columns.Bound(c => c.NZEV_Remediation_Planned);
+        columns.Bound(c => c.ISO_Exception_Number);
+        columns.Bound(c => c.COG_Supported);
+        columns.Bound(c => c.CreatedDate);
+        columns.Bound(c => c.ModifiedDate);
+        columns.Bound(c => c.CreatedBy);
+        columns.Bound(c => c.ModifiedBy);
+        columns.Command(command => {command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+            toolbar.Create();
+            toolbar.Save();
+            toolbar.Excel();
+            toolbar.Pdf();
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.InCell))
+      .Pageable()
+      .Navigatable()
+      .Selectable(selectable => {
+            selectable.Mode(GridSelectionMode.Multiple);
+            selectable.Type(GridSelectionType.Cell);
+      })
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.MultipleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .Events(events => {
+            events.ColumnResize("onColumnResize");
+            events.DataBinding("onDataBinding");
+            events.DetailExpand("onDetailExpand");
+            events.ExcelExport("onExcelExport");
+            events.Save("onSave");
+            events.ColumnReorder("onColumnReorder");
+            events.DetailCollapse("onDetailCollapse");
+            events.Edit("onEdit");
+            events.PdfExport("onPdfExport");
+            events.SaveChanges("onSaveChanges");
+      })
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Batch(true)
+          .Model(model => model.Id(p => p.lcmID))
+          .Read(read => read.Action("ExecutionList_new_Read", "ExecutionListNew"))
+          .Create(create => create.Action("ExecutionList_new_Create", "ExecutionListNew"))
+          .Update(update => update.Action("ExecutionList_new_Update", "ExecutionListNew"))
+          .Destroy(destroy => destroy.Action("ExecutionList_new_Destroy", "ExecutionListNew"))
+      )
+)
+
+<script>
+
+    function onColumnResize(e){
+        //Implement the event handler for ColumnResize
+    }
+
+    function onDataBinding(e){
+        //Implement the event handler for DataBinding
+    }
+
+    function onDetailExpand(e){
+        //Implement the event handler for DetailExpand
+    }
+
+    function onExcelExport(e){
+        //Implement the event handler for ExcelExport
+    }
+
+    function onSave(e){
+        //Implement the event handler for Save
+    }
+
+    function onColumnReorder(e){
+        //Implement the event handler for ColumnReorder
+    }
+
+    function onDetailCollapse(e){
+        //Implement the event handler for DetailCollapse
+    }
+
+    function onEdit(e){
+        //Implement the event handler for Edit
+    }
+
+    function onPdfExport(e){
+        //Implement the event handler for PdfExport
+    }
+
+    function onSaveChanges(e){
+        //Implement the event handler for SaveChanges
+    }
+
+</script>
